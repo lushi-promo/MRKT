@@ -243,7 +243,7 @@ width: 100% !important;
 <td valign="top" align="center"><!--[if gte mso 9]><table width="550" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
 <table cellpadding="0" cellspacing="0" border="0" class="fluid-on-mobile img-wrap" style="max-width:100%;">
 <tbody><tr>
-<td valign="top" align="center"><a href="https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ==" class="imglink" target="_blank">
+<td valign="top" align="center"><a id="instalink" href="https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ==" class="imglink" target="_blank">
 <img src="./RES/mobile vector-2.png" width="550" height="97" alt="" border="0" style="display:block;font-size:14px;max-width:100%;height:auto;" class="width550">
 </a>
 </td>
@@ -258,7 +258,7 @@ width: 100% !important;
     <td valign="top" align="center"><!--[if gte mso 9]><table width="550" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
     <table cellpadding="0" cellspacing="0" border="0" class="fluid-on-mobile img-wrap" style="max-width:100%;">
     <tbody><tr>
-    <td valign="top" align="center"><a href="https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi" class="imglink" target="_blank">
+    <td valign="top" align="center"><a id="facebooklink" href="https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi" class="imglink" target="_blank">
     <img src="./RES/mobile vector-3.png" width="550" height="97" alt="" border="0" style="display:block;font-size:14px;max-width:100%;height:auto;" class="width550">
     </a>
     </td>
@@ -290,7 +290,7 @@ width: 100% !important;
             <td valign="top" align="center"><!--[if gte mso 9]><table width="550" cellpadding="0" cellspacing="0"><tr><td><![endif]-->
             <table cellpadding="0" cellspacing="0" border="0" class="fluid-on-mobile img-wrap" style="max-width:100%;">
             <tbody><tr>
-            <td valign="top" align="center"><a href="http://tiktok.com/@star__mobile" class="imglink" target="_blank">
+            <td valign="top" align="center"><a id="tiktoklink" href="http://tiktok.com/@star__mobile" class="imglink" target="_blank">
             <img src="./RES/mobile vector-5.png" width="550" height="97" alt="" border="0" style="display:block;font-size:14px;max-width:100%;height:auto;" class="width550">
             </a>
             </td>
@@ -333,9 +333,18 @@ width: 100% !important;
     console.log(shop);
     let imgSrc = "https://t4.ftcdn.net/jpg/04/70/29/97/240_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg";
     let whatsapp_link = "";
+    let tiktok_link = "";
+    let insta_link = "";
+    let facebook_link = "";
     //var myImg = document.getElementById('insta');
     var whatsapplink = document.getElementById('whatsapplink');
-    const myMap = new Map([
+    var tiktoklink = document.getElementById('tiktoklink');
+    var instalink = document.getElementById('instalink');
+    var facebooklink = document.getElementById('facebooklink');
+
+
+
+    const whatsapp = new Map([
         ["sai-1", ""],
         ["sai-2", "https://chat.whatsapp.com/DPhojQQtq5ELyH11fUVQnm?mode=ems_qr_t"],
         ["bp-1", "https://chat.whatsapp.com/IgYuTCqz1j60ItW3gQCmfp?mode=ems_qr_t"],
@@ -354,12 +363,75 @@ width: 100% !important;
         ["nls", "https://chat.whatsapp.com/HdPppK3GQuuKflmZd1JHku"],
         ["bt-6", "https://chat.whatsapp.com/BNsffdew1FDCtJSp6CEPYE"],
     ]);
+    const insta = new Map([
+        ["sai-1", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["sai-2", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
+        ["bp-1", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["bp-2", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["bp-3", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["ts-1", ""],
+        ["ts-2", ""],
+        ["post", ""],
+        ["lom-2", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
+        ["tab", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["vec-1", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["vec-5", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["vec-6", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["vec-7", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["vec-8", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["nls", "https://chat.whatsapp.com/HdPppK3GQuuKflmZd1JHku"],
+        ["bt-6", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
+    ]);
+    const facebook = new Map([
+        ["sai-1", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["sai-2", "https://www.facebook.com/share/1BTwoB2Ehw/?mibextid=wwXIfr"],
+        ["bp-1", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["bp-2", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["bp-3", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["ts-1", ""],
+        ["ts-2", ""],
+        ["post", ""],
+        ["lom-2", "https://www.facebook.com/share/1BTwoB2Ehw/?mibextid=wwXIfr"],
+        ["tab", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["vec-1", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["vec-5", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["vec-6", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["vec-7", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["vec-8", "https://www.facebook.com/profile.php?id=61558133969741&mibextid=JRoKGi"],
+        ["nls", ""],
+        ["bt-6", "https://www.facebook.com/share/1BTwoB2Ehw/?mibextid=wwXIfr"],
+    ]);
+    const tiktok = new Map([
+        ["sai-1", "http://tiktok.com/@star__mobile"],
+        ["sai-2", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
+        ["bp-1", "http://tiktok.com/@star__mobile"],
+        ["bp-2", "http://tiktok.com/@star__mobile"],
+        ["bp-3", "http://tiktok.com/@star__mobile"],
+        ["ts-1", "."],
+        ["ts-2", "."],
+        ["post", "."],
+        ["lom-2", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
+        ["tab", "http://tiktok.com/@star__mobile"],
+        ["vec-1", "http://tiktok.com/@star__mobile"],
+        ["vec-5", "http://tiktok.com/@star__mobile"],
+        ["vec-6", "http://tiktok.com/@star__mobile"],
+        ["vec-7", "http://tiktok.com/@star__mobile"],
+        ["vec-8", "http://tiktok.com/@star__mobile"],
+        ["nls", ""],
+        ["bt-6", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
+    ]);
     if(myMap.has(shop) == true)
     {
-        whatsapplink.href = myMap.get(shop);
+        whatsapplink.href = whatsapp.get(shop);
+        instalink.href = insta.get(shop);
+        facebooklink.href = facebook.get(shop);
+        tiktoklink.href = tiktok.get(shop);
     }
     else{
         whatsapplink.href = "";
+        instalink.href = "";
+        facebooklink.href = "";
+        tiktoklink.href = "";
     }
     // if(shop=='sai-2')
     // {
