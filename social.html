@@ -229,7 +229,7 @@ width: 100% !important;
 <table cellpadding="0" cellspacing="0" border="0" class="fluid-on-mobile img-wrap" style="max-width:100%;">
 <tbody><tr>
 <td valign="top" align="center"><a href="https://lushi-branch.github.io/Sai-2/social" class="imglink" target="_blank">
-<img src="./RES/mobile vector-1.png" width="550" height="504" alt="" border="0" style="display:block;font-size:14px;max-width:100%;height:auto;" class="width550">
+<img id="LOGO" src="./RES/mobile vector-1.png" width="550" height="504" alt="" border="0" style="display:block;font-size:14px;max-width:100%;height:auto;" class="width550">
 </a>
 </td>
 </tr>
@@ -331,18 +331,32 @@ width: 100% !important;
     //let shop1 = toString("sai-1").toLowerCase;
 
     console.log(shop);
-    let imgSrc = "https://t4.ftcdn.net/jpg/04/70/29/97/240_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg";
-    let whatsapp_link = "";
-    let tiktok_link = "";
-    let insta_link = "";
-    let facebook_link = "";
+    let imgSrc = document.getElementById('LOGO');
     //var myImg = document.getElementById('insta');
     var whatsapplink = document.getElementById('whatsapplink');
     var tiktoklink = document.getElementById('tiktoklink');
     var instalink = document.getElementById('instalink');
     var facebooklink = document.getElementById('facebooklink');
 
-
+    const LOGOIMG = new Map([
+        ["sai-1", "./RES/mobile vector-1(STAR).png"],
+        ["sai-2", "./RES/mobile vector-1(BT).png"],
+        ["bp-1", "./RES/mobile vector-1(STAR).png"],
+        ["bp-2", "./RES/mobile vector-1(STAR).png"],
+        ["bp-3", "./RES/mobile vector-1(STAR).png"],
+        ["ts-1", ""],
+        ["ts-2", ""],
+        ["post", ""],
+        ["lom-2", "./RES/mobile vector-1(BT).png"],
+        ["tab", "./RES/mobile vector-1(STAR).png"],
+        ["vec-1", "./RES/mobile vector-1(STAR).png"],
+        ["vec-5", "./RES/mobile vector-1(STAR).png"],
+        ["vec-6", "./RES/mobile vector-1(STAR).png"],
+        ["vec-7", "./RES/mobile vector-1(STAR).png"],
+        ["vec-8", "./RES/mobile vector-1(STAR).png"],
+        ["nls", "https://chat.whatsapp.com/HdPppK3GQuuKflmZd1JHku"],
+        ["bt-6", "./RES/mobile vector-1(BT).png"],
+    ]);
 
     const whatsapp = new Map([
         ["sai-1", ""],
@@ -364,21 +378,21 @@ width: 100% !important;
         ["bt-6", "https://chat.whatsapp.com/BNsffdew1FDCtJSp6CEPYE"],
     ]);
     const insta = new Map([
-        ["sai-1", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["sai-1", "./RES/"],
         ["sai-2", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
-        ["bp-1", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
-        ["bp-2", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
-        ["bp-3", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["bp-1", "./RES/"],
+        ["bp-2", "./RES/"],
+        ["bp-3", "./RES/"],
         ["ts-1", ""],
         ["ts-2", ""],
         ["post", ""],
         ["lom-2", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
-        ["tab", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
-        ["vec-1", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
-        ["vec-5", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
-        ["vec-6", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
-        ["vec-7", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
-        ["vec-8", "https://www.instagram.com/star_._.mobile?igsh=MWY1bDJxcnBsN3dwdQ=="],
+        ["tab", "./RES/"],
+        ["vec-1", "./RES/"],
+        ["vec-5", "./RES/"],
+        ["vec-6", "./RES/"],
+        ["vec-7", "./RES/"],
+        ["vec-8", "./RES/"],
         ["nls", "https://chat.whatsapp.com/HdPppK3GQuuKflmZd1JHku"],
         ["bt-6", "https://www.instagram.com/besttelecom_drc?igsh=OG54Z29pbnlld3B0"],
     ]);
@@ -420,18 +434,20 @@ width: 100% !important;
         ["nls", ""],
         ["bt-6", "https://www.tiktok.com/@besttelecom_drc?_r=1&_t=ZS-92BSQguhzBC"],
     ]);
-    if(whatsapp.has(shop) == true || tiktok.has(shop) == true || insta.has(shop) == true || facebook.has(shop) == true)
+    if(whatsapp.has(shop) == true || tiktok.has(shop) == true || insta.has(shop) == true || facebook.has(shop) == true || LOGOIMG.has(shop) == true)
     {
         whatsapplink.href = whatsapp.get(shop);
         instalink.href = insta.get(shop);
         facebooklink.href = facebook.get(shop);
         tiktoklink.href = tiktok.get(shop);
+        imgSrc.src = LOGOIMG.get(shop);
     }
     else{
         whatsapplink.href = "";
         instalink.href = "";
         facebooklink.href = "";
         tiktoklink.href = "";
+        imgSrc.src = './RES/mobile vector-1(STAR).png';
     }
     // if(shop=='sai-2')
     // {
