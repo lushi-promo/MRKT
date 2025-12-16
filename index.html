@@ -1,92 +1,125 @@
-import React, { useState, useEffect } from "react";
-
-const WIN_MESSAGES = [
-  "🎉 You won a free gift!",
-  "🎁 Congrats! You've got a discount!",
-  "⭐ Lucky you! Bonus points added!",
-  "💥 So close! Try again!",
-  "🙁 No luck this time.",
-];
-
-const MAX_CHANCES_PER_SHARE = 3;
-const STORAGE_KEY = "user_chances_left";
-
-export default function SharePlay() {
-  const [chancesLeft, setChancesLeft] = useState(MAX_CHANCES_PER_SHARE);
-  const [message, setMessage] = useState("");
-  const [shared, setShared] = useState(false);
-
-  useEffect(() => {
-    // On load, get chances from localStorage if existing
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored !== null) {
-      setChancesLeft(parseInt(stored, 10));
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chance to Win</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 420px;
+      margin: 40px auto;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #f9f9f9;
     }
-  }, []);
-
-  useEffect(() => {
-    // Persist chances to localStorage
-    localStorage.setItem(STORAGE_KEY, chancesLeft);
-  }, [chancesLeft]);
-
-  function handleShare() {
-    if (shared) {
-      alert("You already shared. You have 3 chances now.");
-      return;
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px 10px 5px 0;
+      border: 1px solid #007bff;
+      background: #007bff;
+      color: white;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
     }
-    // Here you could call navigator.share or just assume share success
-    // For demo, just simulate share success
-    setChancesLeft(MAX_CHANCES_PER_SHARE);
-    setShared(true);
-    setMessage("Thanks for sharing! You have 3 chances now.");
-  }
-
-  function play() {
-    if (chancesLeft <= 0) {
-      setMessage("No chances left. Please share to get 3 new chances.");
-      return;
+    button:disabled {
+      background: #ccc;
+      border-color: #ccc;
+      cursor: not-allowed;
     }
+    button:hover:not(:disabled) {
+      background: #0056b3;
+    }
+    .message {
+      margin-top: 20px;
+      font-weight: bold;
+      min-height: 24px;
+    }
+    .note {
+      font-size: 12px;
+      color: #666;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Chance to Win 🎉</h1>
+  <p>Chances left: <strong id="chancesLeft">0</strong></p>
+  <button id="playBtn" disabled>Play</button>
+  <button id="shareBtn">Share Website</button>
+  <p class="message" id="message"></p>
+  <p class="note">* You get 3 chances each time you share this website.</p>
+  <p class="note">Share URL: <span id="shareUrl"></span></p>
 
-    // Randomly pick a message (win or lose)
-    const winIndex = Math.floor(Math.random() * WIN_MESSAGES.length);
-    setMessage(WIN_MESSAGES[winIndex]);
-    setChancesLeft((c) => c - 1);
-  }
+<script>
+  (function(){
+    const MAX_CHANCES = 3;
+    const STORAGE_KEY = "chances_left";
+    const WIN_MESSAGES = [
+      "🎉 You won a free gift!",
+      "🎁 Congrats! You've got a discount!",
+      "⭐ Lucky you! Bonus points added!",
+      "💥 So close! Try again!",
+      "🙁 No luck this time.",
+    ];
 
-  return (
-    <div style={styles.container}>
-      <h1>Chance to Win 🎉</h1>
-      <p>Chances left: <strong>{chancesLeft}</strong></p>
-      <button onClick={play} disabled={chancesLeft === 0} style={styles.btn}>
-        Play
-      </button>
-      <button onClick={handleShare} style={{ ...styles.btn, marginLeft: 10 }}>
-        Share Website
-      </button>
-      <p style={{ marginTop: 20, fontWeight: "bold" }}>{message}</p>
-      <p style={{ fontSize: 12, color: "#666", marginTop: 30 }}>
-        * You get 3 chances each time you share this website.
-      </p>
-      <p style={{ fontSize: 12, color: "#666", marginTop: 5 }}>
-        Share URL: {window.location.href}
-      </p>
-    </div>
-  );
-}
+    let chancesLeft = 0;
+    let hasShared = false;
 
-const styles = {
-  container: {
-    maxWidth: 420,
-    margin: "40px auto",
-    textAlign: "center",
-    fontFamily: "Arial, sans-serif",
-    padding: 20,
-    border: "1px solid #ccc",
-    borderRadius: 10,
-  },
-  btn: {
-    padding: "10px 20px",
-    fontSize: 16,
-    cursor: "pointer",
-  },
-};
+    const chancesLeftEl = document.getElementById("chancesLeft");
+    const playBtn = document.getElementById("playBtn");
+    const shareBtn = document.getElementById("shareBtn");
+    const messageEl = document.getElementById("message");
+    const shareUrlEl = document.getElementById("shareUrl");
+
+    shareUrlEl.textContent = window.location.href;
+
+    // Load chances from localStorage on page load
+    const storedChances = localStorage.getItem(STORAGE_KEY);
+    if(storedChances !== null) {
+      chancesLeft = Number(storedChances);
+    }
+    updateUI();
+
+    shareBtn.addEventListener("click", () => {
+      if (hasShared) {
+        alert("You already shared. You have 3 chances now.");
+        return;
+      }
+      // Simulate sharing, replace with real share logic if needed
+      hasShared = true;
+      chancesLeft = MAX_CHANCES;
+      localStorage.setItem(STORAGE_KEY, chancesLeft);
+      updateUI();
+      messageEl.textContent = "Thanks for sharing! You have 3 chances now.";
+      playBtn.disabled = false;
+    });
+
+    playBtn.addEventListener("click", () => {
+      if(chancesLeft <= 0) {
+        messageEl.textContent = "No chances left. Please share to get 3 new chances.";
+        playBtn.disabled = true;
+        return;
+      }
+      // Random win message
+      const msg = WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)];
+      messageEl.textContent = msg;
+      chancesLeft--;
+      localStorage.setItem(STORAGE_KEY, chancesLeft);
+      updateUI();
+      if(chancesLeft === 0) {
+        playBtn.disabled = true;
+      }
+    });
+
+    function updateUI() {
+      chancesLeftEl.textContent = chancesLeft;
+      playBtn.disabled = chancesLeft === 0;
+    }
+  })();
+</script>
+</body>
+</html>
