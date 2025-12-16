@@ -1,0 +1,92 @@
+import React, { useState, useEffect } from "react";
+
+const WIN_MESSAGES = [
+  "🎉 You won a free gift!",
+  "🎁 Congrats! You've got a discount!",
+  "⭐ Lucky you! Bonus points added!",
+  "💥 So close! Try again!",
+  "🙁 No luck this time.",
+];
+
+const MAX_CHANCES_PER_SHARE = 3;
+const STORAGE_KEY = "user_chances_left";
+
+export default function SharePlay() {
+  const [chancesLeft, setChancesLeft] = useState(MAX_CHANCES_PER_SHARE);
+  const [message, setMessage] = useState("");
+  const [shared, setShared] = useState(false);
+
+  useEffect(() => {
+    // On load, get chances from localStorage if existing
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored !== null) {
+      setChancesLeft(parseInt(stored, 10));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Persist chances to localStorage
+    localStorage.setItem(STORAGE_KEY, chancesLeft);
+  }, [chancesLeft]);
+
+  function handleShare() {
+    if (shared) {
+      alert("You already shared. You have 3 chances now.");
+      return;
+    }
+    // Here you could call navigator.share or just assume share success
+    // For demo, just simulate share success
+    setChancesLeft(MAX_CHANCES_PER_SHARE);
+    setShared(true);
+    setMessage("Thanks for sharing! You have 3 chances now.");
+  }
+
+  function play() {
+    if (chancesLeft <= 0) {
+      setMessage("No chances left. Please share to get 3 new chances.");
+      return;
+    }
+
+    // Randomly pick a message (win or lose)
+    const winIndex = Math.floor(Math.random() * WIN_MESSAGES.length);
+    setMessage(WIN_MESSAGES[winIndex]);
+    setChancesLeft((c) => c - 1);
+  }
+
+  return (
+    <div style={styles.container}>
+      <h1>Chance to Win 🎉</h1>
+      <p>Chances left: <strong>{chancesLeft}</strong></p>
+      <button onClick={play} disabled={chancesLeft === 0} style={styles.btn}>
+        Play
+      </button>
+      <button onClick={handleShare} style={{ ...styles.btn, marginLeft: 10 }}>
+        Share Website
+      </button>
+      <p style={{ marginTop: 20, fontWeight: "bold" }}>{message}</p>
+      <p style={{ fontSize: 12, color: "#666", marginTop: 30 }}>
+        * You get 3 chances each time you share this website.
+      </p>
+      <p style={{ fontSize: 12, color: "#666", marginTop: 5 }}>
+        Share URL: {window.location.href}
+      </p>
+    </div>
+  );
+}
+
+const styles = {
+  container: {
+    maxWidth: 420,
+    margin: "40px auto",
+    textAlign: "center",
+    fontFamily: "Arial, sans-serif",
+    padding: 20,
+    border: "1px solid #ccc",
+    borderRadius: 10,
+  },
+  btn: {
+    padding: "10px 20px",
+    fontSize: 16,
+    cursor: "pointer",
+  },
+};
