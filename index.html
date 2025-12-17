@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🎄🎉 Holiday Crazy Offer - Full Page Without Promo Image</title>
+  <title>🎄🎉 Holiday Crazy Offer - Responsive</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     /* Global reset */
@@ -55,28 +55,26 @@
     main {
       flex-grow: 1;
       display: flex;
-      flex-direction: column; /* single column now */
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 60px 20px;
+      padding: 40px 20px 60px;
       gap: 30px;
       background: radial-gradient(circle at bottom right, #280000, #010101);
       position: relative;
       z-index: 1;
       min-height: 600px;
-      max-width: 600px;
+      max-width: 480px;
       margin: 0 auto;
       width: 100%;
+      box-sizing: border-box;
     }
 
-    /* Removed .promo-image block */
-
-    /* Prize section expanded to full width */
     .prize-section {
       width: 100%;
       background: linear-gradient(135deg, #ff495c, #a40000);
       border-radius: 25px;
-      padding: 30px 30px 40px;
+      padding: 30px 25px 40px;
       box-shadow:
         0 0 10px #ff0000,
         0 0 20px #ff4a4a,
@@ -87,12 +85,10 @@
       position: relative;
       overflow: visible;
       user-select: none;
-      min-height: 400px;
-      max-width: 100%;
+      min-height: 380px;
       box-sizing: border-box;
     }
 
-    /* Animated flickering lights border */
     .prize-section::before {
       content: "";
       position: absolute;
@@ -120,7 +116,7 @@
 
     .prize-section h2 {
       font-size: 2rem;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: #fff5;
       letter-spacing: 3px;
       text-shadow:
@@ -130,8 +126,8 @@
     }
 
     .prize-section h3 {
-      font-size: 1.7rem;
-      margin-bottom: 25px;
+      font-size: 1.6rem;
+      margin-bottom: 28px;
       text-transform: uppercase;
       font-weight: 700;
       color: #ffd6d6;
@@ -140,11 +136,12 @@
         0 0 6px #ff7575,
         0 0 15px #ff2a2a;
       user-select: none;
+      text-align: center;
     }
 
     .chances-left {
       font-size: 1.4rem;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       font-weight: 700;
       color: #fff;
       text-shadow:
@@ -162,13 +159,12 @@
 
     .btn-group {
       display: flex;
-      gap: 15px;
+      gap: 16px;
       margin-bottom: 24px;
       flex-wrap: wrap;
       justify-content: center;
       user-select: none;
       width: 100%;
-      max-width: 460px;
     }
 
     button {
@@ -176,7 +172,7 @@
       color: #fff;
       border: none;
       cursor: pointer;
-      padding: 14px 36px;
+      padding: 14px 30px;
       font-size: 1.15rem;
       font-weight: 700;
       border-radius: 50px;
@@ -187,13 +183,13 @@
       user-select: none;
       transition: all 0.25s ease;
       flex-grow: 1;
-      min-width: 150px;
-      max-width: 220px;
+      min-width: 140px;
+      max-width: 100%;
       position: relative;
       overflow: hidden;
       z-index: 1;
       touch-action: manipulation;
-      flex-basis: 45%;
+      flex-basis: 48%;
       box-sizing: border-box;
     }
     button:disabled {
@@ -234,7 +230,6 @@
       overflow-wrap: break-word;
     }
 
-    /* Footer */
     footer {
       text-align: center;
       color: #ff8c8c;
@@ -245,21 +240,50 @@
       background: transparent;
     }
 
-    /* Responsive */
-    @media (max-width: 1000px) {
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 0.9rem;
+      }
       main {
-        padding: 40px 15px 50px;
+        padding: 30px 16px 50px;
+        max-width: 100vw;
         min-height: auto;
-      }
-      .btn-group {
-        flex-direction: column;
-      }
-      button {
-        flex-basis: 100%;
-        max-width: none;
       }
       .prize-section {
+        padding: 25px 20px 30px;
         min-height: auto;
+      }
+      .prize-section h2 {
+        font-size: 1.7rem;
+      }
+      .prize-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+      .chances-left {
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+      }
+      .chances-left strong {
+        font-size: 1.6rem;
+      }
+      .btn-group {
+        gap: 12px;
+      }
+      button {
+        font-size: 1.05rem;
+        padding: 12px 20px;
+        flex-basis: 100%;
+        max-width: 100%;
+        min-width: auto;
+      }
+      #message {
+        font-size: 1.1rem;
+        min-height: 50px;
+        padding: 0 5px;
       }
     }
   </style>
@@ -327,7 +351,6 @@
 
     shareBtn.addEventListener("click", async () => {
       if (navigator.share) {
-        // Works on supporting mobile browsers
         try {
           await navigator.share({
             title: "Holiday Mega Offer 🎄🎉",
