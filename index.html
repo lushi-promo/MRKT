@@ -14,184 +14,113 @@
     min-height: 100vh;
     background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
     background-size: cover;
-    color: #fff;
+    color: #333;
     display: flex;
     flex-direction: column;
   }
-  /* Overlay for readability */
+  /* Overlay for contrast */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.75);
+    background: rgba(255 255 255 / 0.7);
+    backdrop-filter: blur(8px);
     z-index: 0;
   }
   header {
     position: relative;
     z-index: 10;
     padding: 12px 15px;
-    background: rgba(255 105 105 / 0.85);
-    box-shadow: 0 0 15px 4px #ff5353cc;
     text-align: center;
     user-select: none;
-  }
-  header h1 {
-    margin: 0;
+    background-color: #ff5a4a;
+    box-shadow: 0 2px 10px rgb(255 90 74 / 0.7);
+    color: white;
     font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: 0.12em;
-    text-shadow: 0 0 10px #fff0f0;
-  }
-  header nav {
-    margin-top: 6px;
-  }
-  header nav button {
-    background: transparent;
-    border: none;
-    color: #ffeaea;
-    font-weight: 600;
+    font-size: 1.2rem;
     letter-spacing: 0.1em;
-    margin: 0 8px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-    user-select: none;
   }
-  header nav button:hover,
-  header nav button:focus {
-    background-color: rgba(255,255,255,0.2);
-    outline: none;
+  header p {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-shadow: none;
+    color: #ffe2ddcc;
   }
   main {
     position: relative;
     z-index: 10;
     flex-grow: 1;
-    padding: 20px 10px 40px;
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 30px 15px 50px;
   }
-  .carousel {
-    width: 100%;
-    max-width: 800px;
-    height: 270px;
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 0 30px #ff4d4dcc;
-    margin-bottom: 40px;
-    position: relative;
-    user-select: none;
-  }
-  .carousel img {
-    width: 100%;
-    height: 270px;
-    object-fit: cover;
-    border-radius: 16px;
-    transition: opacity 0.6s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-  }
-  .carousel img.active {
-    opacity: 1;
-    position: relative;
-  }
-  .carousel-controls {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
-  }
-  .carousel-controls button {
-    background: rgba(255 105 105 / 0.8);
-    border: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .carousel-controls button.active {
-    background: #fff;
-  }
-  .carousel-controls button:hover,
-  .carousel-controls button:focus {
-    background: #fff;
-    outline: none;
-  }
-
-  /* Prize section */
   .prize-section {
-    background: rgba(255, 105, 105, 0.95);
-    border-radius: 20px;
-    padding: 24px 30px 30px;
-    box-shadow: 0 0 25px 8px #ff6666cc;
-    width: 350px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 24px 36px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.15);
+    width: 340px;
     max-width: 95vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     user-select: none;
-    overflow: visible;
   }
   .prize-section h2 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     letter-spacing: 0.06em;
-    text-shadow: 0 0 8px #fff2f2;
+    color: #d84228;
   }
   .prize-section h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     letter-spacing: 0.05em;
+    color: #b33d2b;
     text-transform: uppercase;
-    text-shadow: 0 0 5px #fff1f1;
   }
   .chances-left {
     font-weight: 700;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    user-select: none;
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+    color: #444;
   }
   .chances-left strong {
-    color: #fff8a5;
-    text-shadow: 0 0 12px #ffb347;
+    color: #e7654c;
   }
   .grid-3x3 {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 14px;
     perspective: 900px;
   }
   .card-container {
     position: relative;
     width: 100%;
-    padding-top: 100%;
+    padding-top: 100%; /* square */
     cursor: pointer;
     border-radius: 14px;
-    box-shadow: 0 6px 10px rgba(255, 80, 80, 0.8);
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
     -webkit-tap-highlight-color: transparent;
     user-select: none;
+    background: #fafafb;
+    transition: box-shadow 0.3s ease;
+  }
+  .card-container:hover:not(.flipped) {
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.15);
   }
   .card-inner {
     position: absolute;
     inset: 0;
     border-radius: 14px;
-    transition: transform 0.5s ease;
+    transition: transform 0.45s ease;
     transform-style: preserve-3d;
-    box-shadow: inset 0 0 18px rgba(255,255,255,0.35);
   }
   .card-container.flipped .card-inner {
     transform: rotateY(180deg);
@@ -204,183 +133,119 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.4rem;
-    user-select: none;
+    font-size: 2.1rem;
     font-weight: 700;
+    user-select: none;
   }
   .card-front {
-    background: linear-gradient(145deg, #c73e3e, #8c1616);
-    color: #fff;
-    box-shadow:
-      0 3px 12px rgba(255, 63, 26, 0.85),
-      inset 0 0 25px #f96e6e;
-    transition: background 0.3s ease;
-  }
-  .card-front:hover {
-    background: linear-gradient(145deg, #d45555, #9c2a2a);
-    box-shadow:
-      0 8px 28px rgba(255, 75, 70, 0.95),
-      inset 0 0 32px #f98484;
+    background-color: #ffffff;
+    color: #bbb;
+    box-shadow: inset 0 0 10px #ccc;
   }
   .card-back {
-    background: linear-gradient(145deg, #fff8dc, #fffdf4);
-    border: 2px solid transparent;
-    font-size: 2.2rem;
-    justify-content: center;
-    align-items: center;
+    background-color: #faf7f5;
+    color: #444;
+    border: 1px solid #ddd;
     transform: rotateY(180deg);
+    font-weight: 600;
   }
   .card-back.prize-2 {
-    background: linear-gradient(135deg, #c7f4cc, #9de59a);
-    box-shadow: 0 0 18px 7px #45b632cc inset;
-    color: #1c5d00;
+    background-color: #d1f0d1;
+    color: #2d6206;
+    border-color: #7bbf43;
   }
   .card-back.prize-5 {
-    background: linear-gradient(135deg, #a7d8f5, #64b9e9);
-    box-shadow: 0 0 18px 7px #2c82b9cc inset;
-    color: #0f3b58;
+    background-color: #cde7fb;
+    color: #1068b1;
+    border-color: #4294e0;
   }
   .card-back.prize-10 {
-    background: linear-gradient(135deg, #e2dba6, #c5bf52);
-    box-shadow: 0 0 18px 7px #a99425cc inset;
-    color: #594f00;
+    background-color: #f7f2d2;
+    color: #7c6c10;
+    border-color: #dbcb65;
   }
   .card-back.no-prize {
-    background: linear-gradient(135deg, #ffdad7, #ffbdbb);
-    box-shadow: 0 0 11px 5px #a3323233 inset;
-    color: #7f1a1a;
-    font-weight: 900;
+    background-color: #fceaea;
+    color: #a33a3a;
+    border-color: #e07a7a;
   }
   #shareBtn {
-    margin-top: 32px;
-    background: #ca3b3b;
+    margin-top: 28px;
+    background-color: #d84c41;
     border: none;
     outline: none;
     color: #fff;
     font-weight: 700;
     padding: 14px 30px;
-    border-radius: 38px;
+    border-radius: 32px;
     cursor: pointer;
-    font-size: 1.12rem;
-    box-shadow: 0 9px 30px #be3f3fcc;
+    font-size: 1.05rem;
+    box-shadow: 0 5px 20px rgb(216 76 65 / 0.7);
     user-select: none;
     width: 100%;
     max-width: 280px;
     transition: background-color 0.3s ease;
   }
   #shareBtn:hover:not(:disabled) {
-    background: #e65454;
-    box-shadow: 0 10px 36px #da6767dd;
+    background-color: #eb675a;
+    box-shadow: 0 8px 30px rgb(235 103 90 / 0.8);
   }
   #shareBtn:disabled {
-    background: #b07c7c;
+    background-color: #bb7f7a;
     cursor: not-allowed;
     box-shadow: none;
   }
   #message {
-    margin-top: 14px;
-    font-size: 1.14rem;
+    margin-top: 12px;
+    min-height: 44px;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #222;
+    color: #333;
     user-select: none;
     max-width: 280px;
     text-align: center;
-    background: #fffaf7cc;
-    border-radius: 14px;
-    padding: 10px 16px;
-    box-shadow: 0 0 10px #dd916eff;
-    transition: opacity 0.3s ease;
-  }
-  #message.hidden {
+    background: #fff8f6;
+    border-radius: 10px;
+    padding: 10px 14px;
+    box-shadow: 0 0 8px #dbaa9f;
     opacity: 0;
-    height: 0;
-    padding: 0 16px;
-    margin-top: 0;
-    overflow: hidden;
+    transition: opacity 0.4s ease;
+  }
+  #message.visible {
+    opacity: 1;
   }
   @media (max-width: 600px) {
     header h1 {
-      font-size: 1.15rem;
+      font-size: 1rem;
+      letter-spacing: 0.07em;
     }
     header p {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
     main {
-      padding: 20px 10px 40px;
+      padding: 20px 15px 40px;
       max-width: 100vw;
-      min-height: auto;
     }
     .prize-section {
       width: 100%;
       max-width: 95vw;
-      padding: 22px 20px 30px;
+      padding: 24px 22px 34px;
     }
     .grid-3x3 {
       gap: 8px;
     }
     .card-front, .card-back {
-      font-size: 1.9rem;
+      font-size: 1.7rem;
     }
     #shareBtn {
       max-width: 100%;
       font-size: 1rem;
-      padding: 12px 25px;
+      padding: 12px 22px;
     }
     #message {
       max-width: unset;
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
-  }
-
-  /* Modal styles */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  }
-  .modal-overlay.active {
-    display: flex;
-  }
-  .modal-content {
-    background: #fff;
-    color: #222;
-    border-radius: 12px;
-    max-width: 400px;
-    width: 90vw;
-    padding: 24px 28px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
-    position: relative;
-  }
-  .modal-content h2 {
-    margin-top: 0;
-    margin-bottom: 14px;
-    color: #ca3b3b;
-  }
-  .modal-content p {
-    line-height: 1.4;
-    font-weight: 500;
-    color: #333;
-  }
-  .modal-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
-    color: #ca3b3b;
-    user-select: none;
-  }
-  .modal-close:hover,
-  .modal-close:focus {
-    color: #e65454;
-    outline: none;
   }
 </style>
 </head>
@@ -388,96 +253,19 @@
 <header>
   <h1>Best Telecom</h1>
   <p>Christmas &amp; New Year Special 🎅✨</p>
-  <nav role="navigation" aria-label="Main menu">
-    <button id="homeBtn" type="button">Home</button>
-    <button id="aboutBtn" type="button">About Us</button>
-  </nav>
 </header>
 <main>
-  <section class="carousel" aria-label="Mobile shop image carousel" tabindex="0" style="position:relative; max-width:800px; width:100%; height:270px; margin-bottom:48px; border-radius:16px; overflow:hidden; box-shadow: 0 0 30px #ff4d4dcc;">
-    <img src="https://images.unsplash.com/photo-1512499617640-c2f9990132bc?auto=format&fit=crop&w=1470&q=80" alt="Mobile shop 1" class="active" />
-    <img src="https://images.unsplash.com/photo-1516669395377-5b7a44cc2c1d?auto=format&fit=crop&w=1470&q=80" alt="Mobile shop 2" />
-    <img src="https://images.unsplash.com/photo-1568458170514-3bc747ade78b?auto=format&fit=crop&w=1470&q=80" alt="Mobile shop 3" />
-    <div class="carousel-controls" aria-label="Carousel navigation buttons" style="position:absolute; bottom:14px; left:50%; transform: translateX(-50%); display:flex; gap:10px; z-index:10;">
-      <!-- controls dynamically injected -->
-    </div>
-  </section>
-
   <section class="prize-section" aria-label="Prize Flip Grid">
     <h2>🎁 Win Exciting Prizes!</h2>
     <h3>Get 3 Chances Per Share</h3>
     <p class="chances-left" aria-live="polite" aria-atomic="true">Chances left: <strong id="chancesLeft">0</strong></p>
     <div class="grid-3x3" role="grid" aria-label="Prize cards grid"></div>
     <button id="shareBtn" aria-describedby="message">Share Website to Get 3 Chances</button>
-    <p id="message" class="hidden" role="status" aria-live="polite" aria-atomic="true"></p>
+    <p id="message" role="status" aria-live="polite" aria-atomic="true"></p>
   </section>
 </main>
-
-<!-- Modal -->
-<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-  <div class="modal-content">
-    <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-  </div>
-</div>
-
 <script>
   (function () {
-    // Carousel part
-    const carousel = document.querySelector('.carousel');
-    const imgs = carousel.querySelectorAll('img');
-    const controls = carousel.querySelector('.carousel-controls');
-
-    let currentIndex = 0;
-    const slideCount = imgs.length;
-
-    // Create controls buttons for carousel
-    for(let i=0; i<slideCount; i++){
-      const btn = document.createElement('button');
-      btn.setAttribute('aria-label', `Slide ${i+1}`);
-      btn.type = "button";
-      controls.appendChild(btn);
-      btn.addEventListener('click', () => {
-        goToSlide(i);
-      });
-    }
-    const controlButtons = controls.querySelectorAll('button');
-
-    function goToSlide(index) {
-      imgs.forEach((img,i) => {
-        img.classList.toggle('active', i === index);
-      });
-      controlButtons.forEach((btn,i) => {
-        btn.classList.toggle('active', i === index);
-      });
-      currentIndex = index;
-    }
-    goToSlide(0);
-
-    // Auto slide every 5 seconds
-    let slideInterval = setInterval(() => {
-      let nextIndex = (currentIndex + 1) % slideCount;
-      goToSlide(nextIndex);
-    }, 5000);
-
-    // Pause carousel when focus inside (for accessibility)
-    carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    carousel.addEventListener('mouseleave', () => {
-      slideInterval = setInterval(() => {
-        let nextIndex = (currentIndex + 1) % slideCount;
-        goToSlide(nextIndex);
-      }, 5000);
-    });
-    carousel.addEventListener('focusin', () => clearInterval(slideInterval));
-    carousel.addEventListener('focusout', () => {
-      slideInterval = setInterval(() => {
-        let nextIndex = (currentIndex + 1) % slideCount;
-        goToSlide(nextIndex);
-      }, 5000);
-    });
-
-    // Prize game part - no changes in logic per user request, only hid message when empty
     const MAX_CHANCES = 3;
     const STORAGE_KEY = "holiday_chances_left";
     const WIN_EMOJI_MAP = {
@@ -493,10 +281,11 @@
     const shareBtn = document.getElementById("shareBtn");
     const messageEl = document.getElementById("message");
 
-    let chancesLeft = 0; // Start at 0, must share to get chances
+    let chancesLeft = 0; // Must share before use
     let flippedIndexes = new Set();
     let WIN_POSITIONS = new Map();
 
+    // Initialize 3 random prize positions with random percentages
     function initPrizePositions() {
       WIN_POSITIONS.clear();
       const possiblePercentages = [2, 5, 10];
@@ -508,6 +297,7 @@
       }
     }
 
+    // Load chances from localStorage or 0
     function loadChances() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored !== null) {
@@ -520,10 +310,12 @@
       chancesLeft = 0;
     }
 
+    // Save chances
     function saveChances() {
       localStorage.setItem(STORAGE_KEY, chancesLeft);
     }
 
+    // Render the card grid
     function renderGrid() {
       gridContainer.innerHTML = "";
       for (let i = 0; i < 9; i++) {
@@ -570,6 +362,17 @@
       hideMessage();
     }
 
+    // Show message visibly with fade
+    function showMessage(text) {
+      messageEl.textContent = text;
+      messageEl.style.opacity = '1';
+    }
+    // Hide message smoothly
+    function hideMessage() {
+      messageEl.textContent = "";
+      messageEl.style.opacity = '0';
+    }
+
     function flipCard(index, container) {
       if (chancesLeft <= 0) {
         showMessage("No chances left! Please share the website to get 3 new chances.");
@@ -589,7 +392,7 @@
 
       if (WIN_POSITIONS.has(index)) {
         const winPerc = WIN_POSITIONS.get(index);
-        const confirmMsg = `🎉 Congrats! You won ${winPerc}%. Share this win on WhatsApp?`;
+        const confirmMsg = `🎉 Congrats! You won ${winPerc}%. Do you want to share this win on WhatsApp?`;
         if (confirm(confirmMsg)) {
           const now = new Date();
           const timestamp = now.toLocaleString();
@@ -623,16 +426,6 @@
       updateChancesUI();
     }
 
-    function showMessage(text) {
-      messageEl.textContent = text;
-      messageEl.classList.remove("hidden");
-    }
-
-    function hideMessage() {
-      messageEl.textContent = "";
-      messageEl.classList.add("hidden");
-    }
-
     shareBtn.addEventListener("click", async () => {
       if (navigator.share) {
         try {
@@ -649,7 +442,7 @@
           } else {
             alert("You already have 3 chances available.");
           }
-        } catch (err) {
+        } catch {
           showMessage("Share cancelled or failed. Try sharing to get chances.");
         }
       } else {
@@ -657,43 +450,6 @@
       }
     });
 
-    // Modal logic
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    const homeBtn = document.getElementById('homeBtn');
-    const aboutBtn = document.getElementById('aboutBtn');
-
-    function openModal(title, desc) {
-      modalTitle.textContent = title;
-      modalDesc.textContent = desc;
-      modal.classList.add('active');
-      modalCloseBtn.focus();
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    modalCloseBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', e => {
-      if(e.target === modal) closeModal();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
-      }
-    });
-    homeBtn.addEventListener('click', () => {
-      openModal("Welcome to Best Telecom", "Discover the latest mobile phones and amazing offers in our store. Enjoy a hassle-free shopping experience with expert customer service.");
-    });
-    aboutBtn.addEventListener('click', () => {
-      openModal("About Us", "Best Telecom is a leading mobile phone store committed to delivering quality devices at great prices. Our mission is to connect you with the best tech and unmatched deals during festive seasons.");
-    });
-
-    // Initialize app
     function init() {
       initPrizePositions();
       loadChances();
@@ -704,14 +460,5 @@
     init();
   })();
 </script>
-
 </body>
-<!-- Modal HTML -->
-<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
-  <div class="modal-content">
-    <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDesc"></p>
-  </div>
-</div>
 </html>
