@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🎄🎉 Holiday Crazy Offer - Full Page</title>
+  <title>🎄🎉 Holiday Crazy Offer - Full Page Without Promo Image</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     /* Global reset */
@@ -21,8 +21,6 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
-    /* Removed the black overlay with red shadow */
 
     header {
       background: linear-gradient(45deg, #d72631, #f46036);
@@ -57,48 +55,25 @@
     main {
       flex-grow: 1;
       display: flex;
-      flex-direction: row;
-      justify-content: space-around;
+      flex-direction: column; /* single column now */
+      justify-content: center;
       align-items: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
       gap: 30px;
       background: radial-gradient(circle at bottom right, #280000, #010101);
       position: relative;
       z-index: 1;
       min-height: 600px;
-    }
-
-    /* Left side: Big festive image or illustration */
-    .promo-image {
-      flex: 1;
-      max-width: 500px;
-      min-width: 280px;
-      background: url('https://images.unsplash.com/photo-1601924928867-f487a6c5775b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5dXx8MHx8fHx8fHx8MTY4OTAzNjE5NQ&ixlib=rb-4.0.3&q=80&w=800') no-repeat center/cover;
-      border-radius: 25px;
-      box-shadow:
-        0 0 30px 4px #ff3f3f,
-        0 0 50px 15px #ff3f3f66;
-      filter: drop-shadow(0 0 10px #ff0000);
-      min-height: 320px;
+      max-width: 600px;
+      margin: 0 auto;
       width: 100%;
     }
-    @media (max-width: 900px) {
-      main {
-        flex-direction: column-reverse;
-        min-height: auto;
-      }
-      .promo-image {
-        width: 90vw;
-        height: 200px;
-        margin-top: 30px;
-        max-width: none;
-        min-height: 200px;
-      }
-    }
 
-    /* Right side: Prize section */
+    /* Removed .promo-image block */
+
+    /* Prize section expanded to full width */
     .prize-section {
-      flex: 1;
+      width: 100%;
       background: linear-gradient(135deg, #ff495c, #a40000);
       border-radius: 25px;
       padding: 30px 30px 40px;
@@ -112,8 +87,9 @@
       position: relative;
       overflow: visible;
       user-select: none;
-      max-width: 450px;
       min-height: 400px;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     /* Animated flickering lights border */
@@ -191,7 +167,10 @@
       flex-wrap: wrap;
       justify-content: center;
       user-select: none;
+      width: 100%;
+      max-width: 460px;
     }
+
     button {
       background: linear-gradient(45deg, #ff2a2a, #b10000);
       color: #fff;
@@ -214,6 +193,8 @@
       overflow: hidden;
       z-index: 1;
       touch-action: manipulation;
+      flex-basis: 45%;
+      box-sizing: border-box;
     }
     button:disabled {
       background: #660000;
@@ -267,30 +248,18 @@
     /* Responsive */
     @media (max-width: 1000px) {
       main {
-        flex-direction: column-reverse;
-        gap: 40px;
+        padding: 40px 15px 50px;
         min-height: auto;
-        padding: 30px 15px 50px;
-      }
-      .prize-section {
-        max-width: 100%;
-        width: 100%;
-        min-height: auto;
-      }
-      .promo-image {
-        max-width: 90vw;
-        height: 200px;
-        border-radius: 18px;
-        box-shadow:
-          0 0 30px 6px #ff4a4a,
-          0 0 50px 20px #ff4a4a66;
-        min-height: 200px;
-      }
-      button {
-        max-width: 100%;
       }
       .btn-group {
         flex-direction: column;
+      }
+      button {
+        flex-basis: 100%;
+        max-width: none;
+      }
+      .prize-section {
+        min-height: auto;
       }
     }
   </style>
@@ -302,8 +271,6 @@
   </header>
 
   <main>
-    <div class="promo-image" aria-hidden="true" title="Festive Celebrations"></div>
-
     <section class="prize-section" aria-label="Prize Play Section">
       <h2>🎁 Win Exciting Prizes!</h2>
       <h3>Get 3 Chances Per Share</h3>
@@ -360,7 +327,7 @@
 
     shareBtn.addEventListener("click", async () => {
       if (navigator.share) {
-        // For mobiles and supported browser environments
+        // Works on supporting mobile browsers
         try {
           await navigator.share({
             title: "Holiday Mega Offer 🎄🎉",
@@ -377,12 +344,10 @@
             alert("You already shared and have 3 chances available.");
           }
         } catch (err) {
-          // User cancelled or error, do nothing special
           setMessage("Share cancelled or failed. Try sharing to get chances.");
         }
       } else {
-        // Fallback for desktop or unsupported mobile browsers:
-        showCustomSharePopup();
+        alert("Sharing is not supported on your device/browser. Please share manually.");
       }
     });
 
@@ -417,176 +382,6 @@
 
     function setMessage(text) {
       messageEl.textContent = text;
-    }
-
-    // Custom share popup for fallback (desktop or browsers without navigator.share)
-    function showCustomSharePopup() {
-      if (document.getElementById("customShareOverlay")) return;
-
-      const overlay = document.createElement("div");
-      overlay.id = "customShareOverlay";
-      Object.assign(overlay.style, {
-        position: "fixed",
-        top: "0",
-        left: "0",
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "rgba(0,0,0,0.85)",
-        zIndex: "9999",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "20px",
-        backdropFilter: "blur(6px)"
-      });
-
-      const box = document.createElement("div");
-      Object.assign(box.style, {
-        background: "#440000",
-        borderRadius: "20px",
-        padding: "25px 30px",
-        maxWidth: "320px",
-        width: "90vw",
-        color: "#ffdadb",
-        textAlign: "center",
-        boxShadow: "0 0 15px 3px #ff4f4f"
-      });
-
-      const title = document.createElement("h2");
-      title.textContent = "Share this Offer!";
-      Object.assign(title.style, {
-        marginBottom: "20px",
-        color: "#ff8181",
-        textShadow: "0 0 15px #ff3f3f"
-      });
-      box.appendChild(title);
-
-      const linkToShare = window.location.href;
-      const shareText = encodeURIComponent("Join the Holiday Mega Offer! Get 3 chances to win prizes: ");
-      const encodedUrl = encodeURIComponent(linkToShare);
-
-      const btnContainer = document.createElement("div");
-      Object.assign(btnContainer.style, {
-        display: "flex",
-        flexDirection: "column",
-        gap: "15px"
-      });
-
-      function createShareLink(href, text, bg, bgDark) {
-        const a = document.createElement("a");
-        a.href = href;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.textContent = text;
-        Object.assign(a.style, {
-          background: `linear-gradient(45deg, ${bg}, ${bgDark})`,
-          color: "#fff",
-          textDecoration: "none",
-          padding: "12px 15px",
-          borderRadius: "40px",
-          fontWeight: "700",
-          fontSize: "1rem",
-          userSelect: "none",
-          display: "block",
-          boxShadow: `0 3px 12px ${bg}99`,
-          transition: "all 0.25s ease"
-        });
-        a.addEventListener("mouseenter", () => {
-          a.style.filter = "brightness(1.1)";
-          a.style.transform = "scale(1.05)";
-        });
-        a.addEventListener("mouseleave", () => {
-          a.style.filter = "brightness(1)";
-          a.style.transform = "none";
-        });
-        return a;
-      }
-
-      // WhatsApp Share
-      btnContainer.appendChild(createShareLink(
-        `https://wa.me/?text=${shareText}${encodedUrl}`,
-        "Share on WhatsApp",
-        "#25D366",
-        "#128C7E"
-      ));
-
-      // Telegram Share
-      btnContainer.appendChild(createShareLink(
-        `https://telegram.me/share/url?url=${encodedUrl}&text=${shareText}`,
-        "Share on Telegram",
-        "#54A9EB",
-        "#107AC9"
-      ));
-
-      // Facebook Share
-      btnContainer.appendChild(createShareLink(
-        `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
-        "Share on Facebook",
-        "#4267B2",
-        "#29487D"
-      ));
-
-      // Copy Link button
-      const copyBtn = document.createElement("button");
-      copyBtn.textContent = "Copy Link";
-      Object.assign(copyBtn.style, {
-        background: "#ff4f4f",
-        border: "none",
-        color: "#fff",
-        padding: "12px",
-        fontWeight: "700",
-        borderRadius: "50px",
-        cursor: "pointer",
-        fontSize: "1.05rem",
-        boxShadow: "0 2px 12px #ff4f4fbb inset",
-        userSelect: "none"
-      });
-      copyBtn.addEventListener("click", () => {
-        navigator.clipboard.writeText(linkToShare).then(() => {
-          copyBtn.textContent = "Copied!";
-          setTimeout(() => (copyBtn.textContent = "Copy Link"), 1800);
-          if (!hasShared) {
-            hasShared = true;
-            chancesLeft = MAX_CHANCES;
-            localStorage.setItem(STORAGE_KEY, chancesLeft);
-            setMessage("Thanks for sharing! You now have 3 chances.");
-            updateUI();
-          }
-        }).catch(() => {
-          alert("Failed to copy link. Please copy manually: " + linkToShare);
-        });
-      });
-      btnContainer.appendChild(copyBtn);
-
-      const closeBtn = document.createElement("button");
-      closeBtn.textContent = "Close";
-      Object.assign(closeBtn.style, {
-        marginTop: "30px",
-        background: "#660000",
-        border: "none",
-        color: "#ff9a9a",
-        padding: "10px 30px",
-        fontWeight: "700",
-        borderRadius: "50px",
-        cursor: "pointer",
-        fontSize: "1.05rem",
-        userSelect: "none",
-        boxShadow: "0 0 12px #ff4f4fbb"
-      });
-      closeBtn.addEventListener("click", () => {
-        document.body.removeChild(overlay);
-        document.body.style.overflow = "";
-        setMessage("");
-      });
-
-      box.appendChild(btnContainer);
-      box.appendChild(closeBtn);
-      overlay.appendChild(box);
-      document.body.appendChild(overlay);
-
-      // Prevent scrolling behind popup
-      document.body.style.overflow = "hidden";
     }
   })();
 </script>
