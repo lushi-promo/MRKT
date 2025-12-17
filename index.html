@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Holiday Mega Offer - 3x3 Prize Flip Grid</title>
+<title>Holiday Mega Offer - 3x3 Prize Flip Grid with Reset</title>
 <style>
   /* Reset */
   *, *::before, *::after {
@@ -12,114 +12,112 @@
   body, html {
     margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #1a0000;
-    color: #fff;
+    background: #f9f5f0;
+    color: #2b2b2b;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
   }
 
   header {
-    background: #e94b3c;
+    background: #ef5a4f;
     padding: 15px 20px;
     text-align: center;
-    box-shadow: 0 0 15px #ff5a48;
+    box-shadow: 0 0 10px #e04f49;
     user-select: none;
-  }
-  header h1 {
-    margin: 0;
-    font-weight: 900;
-    font-size: 1.8rem;
-    letter-spacing: 1.5px;
-    text-shadow: 0 0 5px #ff7a7a;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 8px #ffc6c1;
   }
   header p {
-    margin-top: 5px;
-    font-size: 0.95rem;
+    margin-top: 4px;
+    font-size: 0.85rem;
     font-weight: 600;
-    color: #ffdcd8;
+    color: #ffe5dfcc;
+    letter-spacing: 0.05em;
   }
 
   main {
     flex-grow: 1;
     display: flex;
-    max-width: 900px;
+    max-width: 600px;
     margin: 30px auto;
-    padding: 0 20px 40px;
+    padding: 0 20px 50px;
     gap: 40px;
     box-sizing: border-box;
-    align-items: flex-start;
     justify-content: center;
-    flex-wrap: wrap;
   }
 
-  /* Prize Grid Section */
   .prize-section {
-    flex: 1 1 320px;
-    background: linear-gradient(135deg, #ff4040, #a30000);
+    flex: 1 1 100%;
+    background: #fff6f4;
     border-radius: 20px;
-    padding: 25px 20px 40px;
-    box-shadow:
-      0 0 20px #ff3f3f,
-      inset 0 0 15px #fff4;
-    color: #ffe6e6;
+    padding: 30px 25px 40px;
+    box-shadow: 0 0 30px #ef5a4f33;
+    color: #522929;
     display: flex;
     flex-direction: column;
     align-items: center;
     user-select: none;
     position: relative;
-    min-width: 320px;
+    min-width: 300px;
   }
   .prize-section h2 {
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 800;
-    margin-bottom: 8px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 12px #ff8585;
+    margin-bottom: 5px;
+    letter-spacing: 0.05em;
+    color:#c0392b;
+    user-select: none;
   }
   .prize-section h3 {
     font-size: 1.2rem;
     font-weight: 700;
-    margin-bottom: 15px;
-    letter-spacing: 1.2px;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+    color: #a33227;
     text-transform: uppercase;
+    user-select: none;
   }
   .chances-left {
     font-weight: 700;
     font-size: 1.15rem;
     margin-bottom: 20px;
+    user-select: none;
   }
   .chances-left strong {
-    color: #fff685;
+    color: #d94a3b;
   }
 
   /* 3x3 grid for cards */
   .grid-3x3 {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 12px;
+    gap: 12px;
     perspective: 900px;
   }
 
-  /* Each card container for 3D flip */
   .card-container {
     width: 100%;
-    padding-top: 100%; /* Square ratio */
+    padding-top: 100%;
     position: relative;
     cursor: pointer;
     border-radius: 12px;
-    box-shadow: 0 7px 8px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 7px 8px rgba(209, 77, 72, 0.5);
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
   .card-inner {
     position: absolute;
     inset: 0;
     border-radius: 12px;
-    transition: transform 0.6s;
+    transition: transform 0.6s ease;
     transform-style: preserve-3d;
-    box-shadow: inset 0 0 10px #ff6e6e;
+    box-shadow: inset 0 0 10px #f0b2ae;
   }
   .card-container.flipped .card-inner {
     transform: rotateY(180deg);
@@ -134,295 +132,298 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #fff;
-    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.15);
+    font-size: 2.5rem;
     user-select: none;
   }
   .card-front {
-    background: linear-gradient(145deg, #aa0000, #7a0000);
+    background: linear-gradient(145deg, #9e2216, #b3372e);
+    color: #fff;
     box-shadow:
-      0 3px 8px rgba(255, 0, 0, 0.7),
-      inset 0 0 15px #ff4f4f;
+      0 4px 14px rgba(255, 20, 15, 0.6),
+      inset 0 0 15px #ff665a;
+    transition: background 0.3s ease;
   }
   .card-front:hover {
-    background: linear-gradient(145deg, #cc3333, #a00000);
+    background: linear-gradient(145deg, #bb3c31, #d0452b);
     box-shadow:
-      0 6px 15px rgba(255, 80, 80, 0.9),
-      inset 0 0 20px #ff7f7f;
+      0 6px 25px rgba(255, 75, 70, 0.85),
+      inset 0 0 25px #ff7872;
   }
 
   /* Back side */
   .card-back {
-    background: linear-gradient(145deg, #ffedd7, #fff6e1);
-    color: #a32200;
+    background: linear-gradient(145deg, #f9f3db, #fffdf4);
+    border: 2px solid transparent;
+    color: #8a3e1d;
     transform: rotateY(180deg);
-    padding: 10px;
-    text-align: center;
+    font-size: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .card-back.prize {
-    color: #1a5700;
-    background: linear-gradient(145deg, #e0ffcb, #caffa1);
-    box-shadow: 0 0 8px 3px #76b900aa inset;
+    background: linear-gradient(135deg, #c7f4cc, #9de59a);
+    color: #1a5900;
+    box-shadow: 0 0 9px 4px rgba(77, 174, 35, 0.7) inset;
   }
   .card-back.no-prize {
-    color: #9a0000;
-    background: linear-gradient(145deg, #ffd8d8, #ffbaba);
-    box-shadow: 0 0 6px 1px #b40000 inset;
+    background: linear-gradient(135deg, #f9d7d7, #f3bebe);
+    color: #9b2117;
+    box-shadow: 0 0 8px 3px rgba(163, 38, 38, 0.9) inset;
   }
 
   /* Share button */
   #shareBtn {
-    margin-top: 15px;
-    background: #a30000;
+    margin-top: 25px;
+    background: #c1392a;
     border: none;
     outline: none;
     color: #fff;
     font-weight: 700;
-    padding: 14px 30px;
-    border-radius: 40px;
+    padding: 14px 32px;
+    border-radius: 36px;
     cursor: pointer;
     font-size: 1.1rem;
-    box-shadow: 0 6px 20px #b72626;
+    box-shadow: 0 8px 25px #b23c34;
     user-select: none;
-    transition: background-color 0.3s ease;
-    max-width: 280px;
     width: 100%;
+    max-width: 320px;
+    transition: background-color 0.3s ease;
   }
   #shareBtn:hover:not(:disabled) {
-    background: #cc0000;
-    box-shadow: 0 8px 24px #d63333;
+    background: #e2483b;
+    box-shadow: 0 10px 30px #de4736;
   }
   #shareBtn:disabled {
-    background: #6a1b1b;
+    background: #a4746c;
     cursor: not-allowed;
     box-shadow: none;
   }
 
-  /* Message display */
+  /* Message */
   #message {
-    margin-top: 20px;
+    margin-top: 22px;
     min-height: 48px;
     font-size: 1.2rem;
     font-weight: 700;
-    color: #fffadf;
+    color: #2f462d;
     user-select: none;
-    min-width: 280px;
+    max-width: 320px;
     text-align: center;
   }
 
   /* Responsive */
   @media (max-width: 480px) {
     main {
-      margin: 20px 10px;
-      padding-bottom: 30px;
-      max-width: 100vw;
+      margin: 20px 15px;
+      padding-bottom: 40px;
+      max-width: 95vw;
     }
     .prize-section {
+      padding: 25px 20px 35px;
       min-width: unset;
       width: 100%;
-      padding: 20px 15px 35px;
     }
     .grid-3x3 {
       max-width: 280px;
-      grid-gap: 8px;
-    }
-    .card-front, .card-back {
-      font-size: 1.3rem;
+      gap: 8px;
     }
     #message {
-      min-width: unset;
       font-size: 1.1rem;
+    }
+    #shareBtn {
+      max-width: 100%;
+      font-size: 1rem;
+      padding: 12px 25px;
     }
   }
 </style>
 </head>
 <body>
-  <header>
-    <h1>Holiday Mega Offer</h1>
-    <p>Christmas & New Year Special 🎅✨</p>
-  </header>
+<header>
+  <h1>Holiday Mega Offer</h1>
+  <p>Christmas &amp; New Year Special 🎅✨</p>
+</header>
+<main>
+  <section class="prize-section" aria-label="Prize Flip Grid">
+    <h2>🎁 Win Exciting Prizes!</h2>
+    <h3>Get 3 Chances Per Share</h3>
+    <p class="chances-left" aria-live="polite" aria-atomic="true">
+      Chances left: <strong id="chancesLeft">3</strong>
+    </p>
+    <div class="grid-3x3" role="grid" aria-label="Prize cards grid"></div>
+    <button id="shareBtn" aria-describedby="message">Share Website to Get 3 Chances</button>
+    <p id="message" role="status" aria-live="polite" aria-atomic="true"></p>
+  </section>
+</main>
 
-  <main>
-    <section class="prize-section" aria-label="Prize Flip Grid">
-      <h2>🎁 Win Exciting Prizes!</h2>
-      <h3>Get 3 Chances Per Share</h3>
-      <p class="chances-left" aria-live="polite" aria-atomic="true">
-        Chances left: <strong id="chancesLeft">3</strong>
-      </p>
+<script>
+  (function () {
+    const MAX_CHANCES = 3;
+    const STORAGE_KEY = "holiday_chances_left";
+    const WINNER_EMOJI = "🎉";
+    const NO_PRIZE_EMOJI = "❌";
+    const gridContainer = document.querySelector(".grid-3x3");
+    const chancesLeftEl = document.getElementById("chancesLeft");
+    const shareBtn = document.getElementById("shareBtn");
+    const messageEl = document.getElementById("message");
 
-      <div class="grid-3x3" role="grid" aria-label="Prize cards grid">
-        <!-- Cards generated by JS -->
-      </div>
+    let chancesLeft = MAX_CHANCES;
+    let flippedIndexes = new Set();
+    let WIN_POSITIONS = new Set();
 
-      <button id="shareBtn" aria-describedby="message">Share Website to Get 3 Chances</button>
-      <p id="message" role="status" aria-live="polite" aria-atomic="true"></p>
-    </section>
-  </main>
+    // Initialize 3 random prize positions
+    function initPrizePositions() {
+      WIN_POSITIONS.clear();
+      while (WIN_POSITIONS.size < 3) {
+        WIN_POSITIONS.add(Math.floor(Math.random() * 9));
+      }
+    }
 
-  <script>
-    (function () {
-      const MAX_CHANCES = 3;
-      const STORAGE_KEY = "holiday_chances_left";
-      const WIN_POSITIONS = new Set(); // Set of indexes for prize cards (0-8)
-      const gridContainer = document.querySelector(".grid-3x3");
-      const chancesLeftEl = document.getElementById("chancesLeft");
-      const shareBtn = document.getElementById("shareBtn");
-      const messageEl = document.getElementById("message");
-      let chancesLeft = 0;
-      let flippedIndexes = new Set();
-
-      // Initialize prize positions randomly (e.g. 3 winning cards)
-      function initPrizePositions() {
-        while (WIN_POSITIONS.size < 3) {
-          WIN_POSITIONS.add(Math.floor(Math.random() * 9));
+    // Load chances or reset to MAX if none
+    function loadChances() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored !== null) {
+        const val = Number(stored);
+        if (!isNaN(val) && val >= 0 && val <= MAX_CHANCES) {
+          chancesLeft = val;
+          return;
         }
       }
+      chancesLeft = MAX_CHANCES;
+    }
 
-      // Load chances from localStorage or start with 0
-      function loadChances() {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored !== null) {
-          const val = Number(stored);
-          if (!isNaN(val) && val >= 0 && val <= MAX_CHANCES) {
-            chancesLeft = val;
-          } else {
-            chancesLeft = 0;
-          }
-        } else {
-          chancesLeft = 0;
-        }
-      }
+    // Save chances to localStorage
+    function saveChances() {
+      localStorage.setItem(STORAGE_KEY, chancesLeft);
+    }
 
-      // Save chances to localStorage
-      function saveChances() {
-        localStorage.setItem(STORAGE_KEY, chancesLeft);
-      }
-
-      // Update chances display and share button state
-      function updateChancesUI() {
-        chancesLeftEl.textContent = chancesLeft;
-        shareBtn.disabled = chancesLeft === MAX_CHANCES;
-        if (chancesLeft === 0) {
-          messageEl.textContent = "You have no chances left. Share to get 3 new chances.";
-        }
-      }
-
-      // Create a single card element
-      function createCard(index) {
+    // Build the card grid
+    function renderGrid() {
+      gridContainer.innerHTML = "";
+      for (let i = 0; i < 9; i++) {
         const container = document.createElement("div");
         container.className = "card-container";
         container.setAttribute("role", "gridcell");
         container.setAttribute("tabindex", "0");
         container.setAttribute("aria-label", "Card, not flipped");
-        container.setAttribute("data-index", index);
+        container.dataset.index = i;
 
         const inner = document.createElement("div");
         inner.className = "card-inner";
 
         const front = document.createElement("div");
         front.className = "card-front";
-        front.textContent = "?";
+        front.textContent = "❓";
 
         const back = document.createElement("div");
         back.className = "card-back";
-
-        if (WIN_POSITIONS.has(index)) {
+        if (WIN_POSITIONS.has(i)) {
           back.classList.add("prize");
-          back.textContent = "🎉 You won a prize!";
+          back.textContent = WINNER_EMOJI;
         } else {
           back.classList.add("no-prize");
-          back.textContent = "🙁 No prize here.";
+          back.textContent = NO_PRIZE_EMOJI;
         }
 
         inner.appendChild(front);
         inner.appendChild(back);
         container.appendChild(inner);
 
-        // Flip on click with chance check
-        container.addEventListener("click", () => {
-          flipCard(index, container);
-        });
-        // Keyboard accessibility (flip on Enter or Space)
-        container.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
+        // Click + keyboard event handlers
+        container.addEventListener("click", () => flipCard(i, container));
+        container.addEventListener("keydown", e => {
+          if ((e.key === "Enter" || e.key === " ") && !e.repeat) {
             e.preventDefault();
-            flipCard(index, container);
+            flipCard(i, container);
           }
         });
 
-        return container;
+        gridContainer.appendChild(container);
+      }
+      flippedIndexes.clear();
+    }
+
+    function flipCard(index, container) {
+      if (chancesLeft <= 0) {
+        messageEl.textContent = "No chances left! Please share the website to get 3 new chances.";
+        return;
+      }
+      if (flippedIndexes.has(index)) {
+        messageEl.textContent = "You already flipped this card.";
+        return;
       }
 
-      function flipCard(index, cardContainer) {
-        if (chancesLeft <= 0) {
-          messageEl.textContent = "No chances left! Please share the website to get more chances.";
-          return;
-        }
-        if (flippedIndexes.has(index)) {
-          messageEl.textContent = "You already flipped this card.";
-          return;
-        }
+      container.classList.add("flipped");
+      flippedIndexes.add(index);
 
-        cardContainer.classList.add("flipped");
-        flippedIndexes.add(index);
+      chancesLeft--;
+      saveChances();
+      updateChancesUI();
 
-        chancesLeft--;
-        saveChances();
-        updateChancesUI();
-
-        if (WIN_POSITIONS.has(index)) {
-          messageEl.textContent = "🎉 Congrats! You found a prize!";
-        } else {
-          messageEl.textContent = "🙁 Sorry, no prize here.";
-        }
+      if (WIN_POSITIONS.has(index)) {
+        messageEl.textContent = "🎉 Congrats! You found a prize!";
+      } else {
+        messageEl.textContent = "🙁 Sorry, no prize here.";
       }
 
-      function renderGrid() {
-        gridContainer.innerHTML = "";
-        for (let i = 0; i < 9; i++) {
-          gridContainer.appendChild(createCard(i));
-        }
+      // If chances exhausted reset grid & prizes after short delay
+      if (chancesLeft === 0) {
+        setTimeout(() => {
+          messageEl.textContent = "Chances reset! New prizes shuffled, have fun!";
+          resetGame();
+        }, 1500);
       }
+    }
 
-      function addShareFunctionality() {
-        shareBtn.addEventListener("click", async () => {
-          if (navigator.share) {
-            try {
-              await navigator.share({
-                title: "Holiday Mega Offer 🎄🎉",
-                text: "Join me and get 3 chances to win exciting prizes! Share & Play 🎁🎅",
-                url: window.location.href
-              });
-              if (chancesLeft < MAX_CHANCES) {
-                chancesLeft = MAX_CHANCES;
-                saveChances();
-                messageEl.textContent = "Thanks for sharing! You now have 3 chances.";
-                updateChancesUI();
-              } else {
-                alert("You already have 3 chances available.");
-              }
-            } catch (err) {
-              messageEl.textContent = "Share cancelled or failed. Try sharing to get chances.";
-            }
+    function updateChancesUI() {
+      chancesLeftEl.textContent = chancesLeft;
+      shareBtn.disabled = chancesLeft === MAX_CHANCES;
+    }
+
+    // Reset prizes, chances & grid for next round
+    function resetGame() {
+      initPrizePositions();
+      chancesLeft = MAX_CHANCES;
+      saveChances();
+      renderGrid();
+      updateChancesUI();
+    }
+
+    // Share functionality
+    shareBtn.addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Holiday Mega Offer 🎄🎉",
+            text: "Join me and get 3 chances to win exciting prizes! Share & Play 🎁🎅",
+            url: window.location.href
+          });
+          if (chancesLeft < MAX_CHANCES) {
+            chancesLeft = MAX_CHANCES;
+            saveChances();
+            messageEl.textContent = "Thanks for sharing! You now have 3 chances.";
+            updateChancesUI();
           } else {
-            alert("Sharing not supported on your device/browser. Please share the link manually.");
+            alert("You already have 3 chances available.");
           }
-        });
+        } catch (err) {
+          messageEl.textContent = "Share cancelled or failed. Try sharing to get chances.";
+        }
+      } else {
+        alert("Sharing is not supported on your device/browser. Please share the link manually.");
       }
+    });
 
-      // Initialization
-      function init() {
-        initPrizePositions();
-        loadChances();
-        renderGrid();
-        updateChancesUI();
-        addShareFunctionality();
-      }
-
-      init();
-    })();
-  </script>
+    // Initialization on page load
+    function init() {
+      initPrizePositions();
+      loadChances();
+      renderGrid();
+      updateChancesUI();
+    }
+    init();
+  })();
+</script>
 </body>
 </html>
