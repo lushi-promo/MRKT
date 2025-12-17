@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🎄🎉 Holiday Crazy Offer - Responsive</title>
+  <title>Holiday Mega Offer - Card Selection & Light Theme</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     /* Global reset */
@@ -13,277 +13,210 @@
       margin: 0; padding: 0;
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background:
-        radial-gradient(circle at center, #050505 0%, #0c0c0c 100%);
-      color: #fff;
-      overflow-x: hidden;
+      background: #f5f5f7;
+      color: #222;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
     header {
-      background: linear-gradient(45deg, #d72631, #f46036);
-      padding: 25px 15px;
+      background: #ff6e54;
+      padding: 15px 20px;
       text-align: center;
-      box-shadow:
-        0 0 15px 5px #ff4f4f;
-      position: sticky;
-      top: 0;
-      z-index: 10;
       user-select: none;
+      box-shadow: 0 3px 8px rgba(255,110,84,0.4);
     }
     header h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 1.6rem;
       color: #fff;
-      letter-spacing: 4px;
-      text-shadow:
-        0 0 7px #ffcbcb,
-        0 0 20px #ff7a7a;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
     }
     header p {
-      margin-top: 8px;
-      font-size: 1rem;
-      color: #ffe1e1;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      margin-top: 5px;
+      font-size: 0.9rem;
+      color: #ffffffcc;
       font-weight: 600;
-      text-shadow: 0 0 5px #ff8f8f;
+      letter-spacing: 1px;
     }
 
     main {
       flex-grow: 1;
+      max-width: 480px;
+      margin: 30px auto;
+      padding: 0 20px 40px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 40px 20px 60px;
       gap: 30px;
-      background: radial-gradient(circle at bottom right, #280000, #010101);
-      position: relative;
-      z-index: 1;
-      min-height: 600px;
-      max-width: 480px;
-      margin: 0 auto;
-      width: 100%;
-      box-sizing: border-box;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
 
     .prize-section {
       width: 100%;
-      background: linear-gradient(135deg, #ff495c, #a40000);
-      border-radius: 25px;
-      padding: 30px 25px 40px;
-      box-shadow:
-        0 0 10px #ff0000,
-        0 0 20px #ff4a4a,
-        inset 0 0 10px #fff3;
+      padding: 25px 20px 40px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(255,110,84,0.4);
+      background: linear-gradient(135deg, #ffd6d4, #ffb8b5);
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
-      overflow: visible;
       user-select: none;
-      min-height: 380px;
-      box-sizing: border-box;
-    }
-
-    .prize-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 25px;
-      padding: 3px;
-      background:
-        linear-gradient(270deg, #ff0000, #ff6600, #ff0000, #ff6600);
-      background-size: 600% 600%;
-      animation: glowing 6s linear infinite;
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: destination-out;
-      mask-composite: subtract;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @keyframes glowing {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
     }
 
     .prize-section h2 {
-      font-size: 2rem;
-      margin-bottom: 8px;
-      color: #fff5;
-      letter-spacing: 3px;
-      text-shadow:
-        0 0 5px #ffbaba,
-        0 0 20px #ff4c4c;
-      user-select: none;
-    }
-
-    .prize-section h3 {
-      font-size: 1.6rem;
-      margin-bottom: 28px;
-      text-transform: uppercase;
+      font-size: 1.7rem;
+      color: #d23018;
+      margin-bottom: 12px;
       font-weight: 700;
-      color: #ffd6d6;
-      letter-spacing: 2.5px;
-      text-shadow:
-        0 0 6px #ff7575,
-        0 0 15px #ff2a2a;
-      user-select: none;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+    .prize-section h3 {
+      font-size: 1.2rem;
+      color: #a23319;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
       text-align: center;
     }
 
     .chances-left {
-      font-size: 1.4rem;
-      margin-bottom: 22px;
-      font-weight: 700;
-      color: #fff;
-      text-shadow:
-        0 0 8px #fff7,
-        0 0 20px #ff6b6b;
-      user-select: none;
+      font-size: 1.1rem;
+      color: #7f3c2f;
+      margin-bottom: 24px;
+      font-weight: 600;
     }
     .chances-left strong {
-      font-size: 2rem;
-      color: #fff7b3;
-      text-shadow:
-        0 0 20px #ffd700,
-        0 0 25px #ffb700;
+      color: #d23018;
+      font-weight: 700;
     }
 
-    .btn-group {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
+    /* Card selection container */
+    .card-selection {
+      display: grid;
+      gap: 15px;
+      margin-bottom: 25px;
+      width: 100%;
+      max-width: 300px;
       justify-content: center;
       user-select: none;
-      width: 100%;
+    }
+    /* For toggling grid size on radio change */
+    .card-selection.grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .card-selection.grid-4 {
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    button {
-      background: linear-gradient(45deg, #ff2a2a, #b10000);
-      color: #fff;
-      border: none;
+    /* Individual card styling */
+    .card {
+      background: #ffffffcc;
+      border-radius: 10px;
+      box-shadow:
+        0 4px 10px rgba(222, 72, 34, 0.25);
+      padding: 25% 0; /* maintain square aspect ratio */
       cursor: pointer;
-      padding: 14px 30px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      border-radius: 50px;
-      box-shadow:
-        0 4px 15px rgb(255 0 0 / 0.85),
-        inset 0 -3px 8px rgb(255 255 255 / 0.15);
-      text-shadow: 0 0 8px #7a0000;
-      user-select: none;
-      transition: all 0.25s ease;
-      flex-grow: 1;
-      min-width: 140px;
-      max-width: 100%;
+      border: 3px solid transparent;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
       position: relative;
-      overflow: hidden;
-      z-index: 1;
-      touch-action: manipulation;
-      flex-basis: 48%;
-      box-sizing: border-box;
     }
-    button:disabled {
-      background: #660000;
-      box-shadow: none;
-      cursor: not-allowed;
-      color: #bbb;
-      text-shadow: none;
-    }
-    button:hover:not(:disabled),
-    button:focus-visible:not(:disabled) {
-      background: linear-gradient(45deg, #ff6363, #d00000);
+    .card.selected {
+      border-color: #d23018;
+      background: #ffb3a9;
       box-shadow:
-        0 6px 25px rgb(255 80 80 / 0.95),
-        inset 0 -3px 10px rgb(255 255 255 / 0.4);
-      transform: scale(1.07);
+        0 0 10px 3px rgba(210,48,24,0.8);
+    }
+    .card:hover {
+      background: #ffe6e3;
+    }
+    .card:after {
+      content: attr(data-label);
+      font-weight: 600;
+      color: #d23018;
+      font-size: 1.1rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      user-select: none;
+    }
+
+    .share-btn {
+      background: #d23018;
+      color: white;
+      font-weight: 700;
+      padding: 12px 36px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      border: none;
+      box-shadow:
+        0 4px 14px rgba(210,48,24,0.7),
+        inset 0 -3px 6px rgba(255,255,255,0.35);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      width: 100%;
+      max-width: 280px;
+    }
+    .share-btn:disabled {
+      background: #b97c72;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .share-btn:hover:not(:disabled),
+    .share-btn:focus-visible:not(:disabled) {
+      background: #e94226;
+      box-shadow:
+        0 6px 25px rgba(233,66,38,0.85),
+        inset 0 -4px 10px rgba(255,255,255,0.5);
       outline: none;
     }
-    button:focus-visible {
-      outline: 3px solid #ffc107;
+    .share-btn:focus-visible {
+      outline: 3px solid #ffb3a9;
       outline-offset: 3px;
     }
 
     #message {
-      font-size: 1.3rem;
+      color: #982a15;
       font-weight: 700;
-      min-height: 62px;
+      font-size: 1.15rem;
+      min-height: 48px;
       text-align: center;
-      line-height: 1.3;
-      color: #ffea71;
-      text-shadow:
-        0 0 7px #ffcf24,
-        0 0 20px #ff9e00;
+      margin-top: 5px;
       user-select: none;
-      margin-bottom: 0;
-      padding: 0 10px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-    }
-
-    footer {
-      text-align: center;
-      color: #ff8c8c;
-      font-size: 0.9rem;
-      padding: 15px 5px 25px;
-      user-select: none;
-      text-shadow: 0 0 4px #5a1a1a;
-      background: transparent;
+      min-width: 260px;
     }
 
     @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      header p {
-        font-size: 0.9rem;
-      }
       main {
-        padding: 30px 16px 50px;
-        max-width: 100vw;
+        max-width: 95vw;
+        padding: 20px 15px 40px;
         min-height: auto;
       }
-      .prize-section {
-        padding: 25px 20px 30px;
-        min-height: auto;
+      .card-selection {
+        max-width: 260px;
       }
       .prize-section h2 {
-        font-size: 1.7rem;
+        font-size: 1.4rem;
       }
       .prize-section h3 {
-        font-size: 1.3rem;
-        margin-bottom: 20px;
+        font-size: 1rem;
+        margin-bottom: 15px;
       }
-      .chances-left {
-        font-size: 1.1rem;
-        margin-bottom: 18px;
-      }
-      .chances-left strong {
-        font-size: 1.6rem;
-      }
-      .btn-group {
-        gap: 12px;
-      }
-      button {
-        font-size: 1.05rem;
-        padding: 12px 20px;
-        flex-basis: 100%;
+      .share-btn {
+        font-size: 1rem;
+        padding: 12px 24px;
         max-width: 100%;
-        min-width: auto;
       }
       #message {
-        font-size: 1.1rem;
-        min-height: 50px;
-        padding: 0 5px;
+        min-width: auto;
       }
     }
   </style>
@@ -295,118 +228,143 @@
   </header>
 
   <main>
-    <section class="prize-section" aria-label="Prize Play Section">
+    <section class="prize-section" aria-label="Prize Selection Section">
       <h2>🎁 Win Exciting Prizes!</h2>
-      <h3>Get 3 Chances Per Share</h3>
+      <h3>Select Your Card Grid Size</h3>
       <p class="chances-left" aria-live="polite">
         Chances left: <strong id="chancesLeft">0</strong>
       </p>
-      <div class="btn-group">
-        <button id="playBtn" disabled aria-disabled="true" aria-describedby="message" type="button">Play</button>
-        <button id="shareBtn" type="button" aria-describedby="message">Share Website</button>
+      
+      <div role="radiogroup" aria-label="Select card grid size" class="card-selection grid-3" id="cardGrid">
+        <div class="card selected" tabindex="0" role="radio" aria-checked="true" data-label="3 × 3" data-grid="grid-3"></div>
+        <div class="card" tabindex="-1" role="radio" aria-checked="false" data-label="4 × 4" data-grid="grid-4"></div>
       </div>
+
+      <button id="shareBtn" class="share-btn" aria-describedby="message">Share Website to Get 3 Chances</button>
       <p id="message" role="status" aria-live="polite" aria-atomic="true"></p>
     </section>
   </main>
 
-  <footer>
-    &copy; 2024 Holiday Offers — Spread the Joy!
-  </footer>
+  <script>
+    (function() {
+      const MAX_CHANCES = 3;
+      const STORAGE_KEY = "holiday_chances_left";
+      const STORAGE_GRID_KEY = "holiday_selected_grid";
+      const WIN_MESSAGES = [
+        "🎉 You won a free gift!",
+        "🎁 Congrats! You've got a discount!",
+        "⭐ Lucky you! Bonus points added!",
+        "💥 So close! Try again!",
+        "🙁 No luck this time.",
+      ];
+      
+      let chancesLeft = 0;
+      let hasShared = false;
+      let selectedGridClass = "grid-3";
 
-<script>
-  (function() {
-    const MAX_CHANCES = 3;
-    const STORAGE_KEY = "holiday_chances_left";
-    const WIN_MESSAGES = [
-      "🎉 You won a free gift!",
-      "🎁 Congrats! You've got a discount!",
-      "⭐ Lucky you! Bonus points added!",
-      "💥 So close! Try again!",
-      "🙁 No luck this time.",
-    ];
+      const chancesLeftEl = document.getElementById("chancesLeft");
+      const shareBtn = document.getElementById("shareBtn");
+      const messageEl = document.getElementById("message");
+      const cardGrid = document.getElementById("cardGrid");
 
-    let chancesLeft = 0;
-    let hasShared = false;
-
-    const chancesLeftEl = document.getElementById("chancesLeft");
-    const playBtn = document.getElementById("playBtn");
-    const shareBtn = document.getElementById("shareBtn");
-    const messageEl = document.getElementById("message");
-
-    // On load, populate chances from localStorage if valid
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored !== null) {
-        const val = Number(stored);
-        if (!isNaN(val) && val >= 0 && val <= MAX_CHANCES) {
-          chancesLeft = val;
-          if (chancesLeft > 0) hasShared = true;
-        }
-      }
-    } catch(e) {
-      chancesLeft = 0;
-      hasShared = false;
-    }
-    updateUI();
-
-    shareBtn.addEventListener("click", async () => {
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: "Holiday Mega Offer 🎄🎉",
-            text: "Join me and get 3 chances to win exciting prizes! Share & Play 🎁🎅",
-            url: window.location.href
-          });
-          if (!hasShared) {
-            hasShared = true;
-            chancesLeft = MAX_CHANCES;
-            localStorage.setItem(STORAGE_KEY, chancesLeft);
-            setMessage("Thanks for sharing! You now have 3 chances.");
-            updateUI();
-          } else {
-            alert("You already shared and have 3 chances available.");
+      // Restore chances and selected grid from localStorage
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored !== null) {
+          const val = Number(stored);
+          if (!isNaN(val) && val >= 0 && val <= MAX_CHANCES) {
+            chancesLeft = val;
+            if (chancesLeft > 0) hasShared = true;
           }
-        } catch (err) {
-          setMessage("Share cancelled or failed. Try sharing to get chances.");
         }
-      } else {
-        alert("Sharing is not supported on your device/browser. Please share manually.");
+        const storedGrid = localStorage.getItem(STORAGE_GRID_KEY);
+        if(storedGrid === "grid-3" || storedGrid === "grid-4") {
+          selectedGridClass = storedGrid;
+          updateGridSelectionUI();
+          updateGridClassOnSelection();
+        }
+      } catch(e) {
+        chancesLeft = 0;
+        hasShared = false;
       }
-    });
 
-    playBtn.addEventListener("click", () => {
-      if (chancesLeft <= 0) {
-        setMessage("No chances left. Share to get 3 new chances.");
-        disablePlay();
-        return;
-      }
-      const msg = WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)];
-      setMessage(msg);
-      chancesLeft--;
-      localStorage.setItem(STORAGE_KEY, chancesLeft);
       updateUI();
-      if (chancesLeft === 0) disablePlay();
-    });
 
-    function updateUI() {
-      chancesLeftEl.textContent = chancesLeft;
-      if(chancesLeft > 0) {
-        playBtn.disabled = false;
-        playBtn.setAttribute("aria-disabled", "false");
-      } else {
-        disablePlay();
+      // Card selection as accessible radio buttons
+      cardGrid.addEventListener("click", e => {
+        if(e.target.classList.contains("card")) {
+          setSelectedGrid(e.target.dataset.grid);
+        }
+      });
+      cardGrid.addEventListener("keydown", e => {
+        if(e.target.classList.contains("card") && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
+          e.preventDefault();
+          const cards = Array.from(cardGrid.querySelectorAll(".card"));
+          const currentIndex = cards.indexOf(e.target);
+          let nextIndex = (e.key === "ArrowRight") ? currentIndex + 1 : currentIndex -1;
+          if(nextIndex < 0) nextIndex = cards.length -1;
+          if(nextIndex >= cards.length) nextIndex = 0;
+          setSelectedGrid(cards[nextIndex].dataset.grid);
+          cards[nextIndex].focus();
+        }
+      });
+
+      shareBtn.addEventListener("click", async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: "Holiday Mega Offer 🎄🎉",
+              text: "Join me and get 3 chances to win exciting prizes! Share & Play 🎁🎅",
+              url: window.location.href
+            });
+            if (!hasShared) {
+              hasShared = true;
+              chancesLeft = MAX_CHANCES;
+              localStorage.setItem(STORAGE_KEY, chancesLeft);
+              setMessage("Thanks for sharing! You now have 3 chances.");
+              updateUI();
+            } else {
+              alert("You already shared and have 3 chances available.");
+            }
+          } catch (err) {
+            setMessage("Share cancelled or failed. Try sharing to get chances.");
+          }
+        } else {
+          alert("Sharing is not supported on your device/browser. Please share manually.");
+        }
+      });
+
+      function setSelectedGrid(gridClass) {
+        selectedGridClass = gridClass;
+        localStorage.setItem(STORAGE_GRID_KEY, selectedGridClass);
+        updateGridSelectionUI();
+        updateGridClassOnSelection();
+        setMessage(`Selected ${gridClass === "grid-3" ? "3×3" : "4×4"} card grid.`);
       }
-    }
 
-    function disablePlay() {
-      playBtn.disabled = true;
-      playBtn.setAttribute("aria-disabled", "true");
-    }
+      function updateGridSelectionUI() {
+        const cards = cardGrid.querySelectorAll(".card");
+        cards.forEach(card => {
+          const isSelected = (card.dataset.grid === selectedGridClass);
+          card.classList.toggle("selected", isSelected);
+          card.setAttribute("aria-checked", isSelected ? "true" : "false");
+          card.tabIndex = isSelected ? 0 : -1;
+        });
+      }
+      function updateGridClassOnSelection() {
+        cardGrid.classList.remove("grid-3", "grid-4");
+        cardGrid.classList.add(selectedGridClass);
+      }
 
-    function setMessage(text) {
-      messageEl.textContent = text;
-    }
-  })();
-</script>
+      function updateUI() {
+        chancesLeftEl.textContent = chancesLeft;
+        shareBtn.disabled = (chancesLeft === MAX_CHANCES);
+      }
+      function setMessage(text) {
+        messageEl.textContent = text;
+      }
+
+    })();
+  </script>
 </body>
 </html>
