@@ -1,246 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Best Telecom - Holiday Mega Offer with WhatsApp Share</title>
-<style>
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body, html {
-    margin: 0; padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-  }
-  /* Overlay so content is visible */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 0;
-  }
-  header {
-    position: relative;
-    background: transparent;
-    padding: 12px 15px;
-    text-align: center;
-    user-select: none;
-    z-index: 1;
-  }
-  header h1 {
-    margin: 0;
-    font-weight: 700;
-    font-size: 1.3rem;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 10px #ff8a80;
-  }
-  header p {
-    margin-top: 4px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #ffbdbdcc;
-    letter-spacing: 0.05em;
-    text-shadow: 0 0 6px #ff8a80;
-  }
-  main {
-    position: relative;
-    z-index: 1;
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 10px 50px;
-  }
-  .prize-section {
-    background: rgba(255,105,105,0.85);
-    border-radius: 16px;
-    padding: 22px 20px 30px;
-    box-shadow: 0 0 15px 2px #ff5252;
-    width: 320px;
-    max-width: 90vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    user-select: none;
-  }
-  .prize-section h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    letter-spacing: 0.06em;
-    text-shadow: 0 0 7px #fff2f2;
-  }
-  .prize-section h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-shadow: 0 0 5px #fff1f1;
-  }
-  .chances-left {
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 16px;
-    user-select: none;
-  }
-  .chances-left strong {
-    color: #fff6b7;
-    text-shadow: 0 0 10px #ffb347;
-  }
-  .grid-3x3 {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    perspective: 900px;
-  }
-  .card-container {
-    position: relative;
-    width: 100%;
-    padding-top: 100%; /* square */
-    cursor: pointer;
-    border-radius: 12px;
-    box-shadow: 0 5px 7px rgba(255, 90, 90, 0.6);
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-  }
-  .card-inner {
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    transition: transform 0.6s ease;
-    transform-style: preserve-3d;
-  }
-  .card-container.flipped .card-inner {
-    transform: rotateY(180deg);
-  }
-  .card-front, .card-back {
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    user-select: none;
-    box-shadow: inset 0 0 12px rgba(255,255,255,0.3);
-  }
-  .card-front {
-    background: linear-gradient(150deg, #c73e3e, #8c1616);
-    color: #fff;
-    box-shadow:
-      0 3px 12px rgba(255, 63, 26, 0.8),
-      inset 0 0 20px #f96e6e;
-    transition: background 0.3s ease;
-  }
-  .card-front:hover {
-    background: linear-gradient(150deg, #d45555, #9c2a2a);
-    box-shadow:
-      0 6px 22px rgba(255, 75, 70, 0.85),
-      inset 0 0 25px #f98484;
-  }
-  .card-back {
-    background: linear-gradient(145deg, #fff8dc, #fffdf4);
-    border: 2px solid transparent;
-    font-size: 2.6rem;
-    justify-content: center;
-    align-items: center;
-    transform: rotateY(180deg);
-  }
-  .card-back.prize-2 {
-    background: linear-gradient(135deg, #c7f4cc, #9de59a);
-    box-shadow: 0 0 15px 6px #52a634aa inset;
-    color: #1a5900;
-  }
-  .card-back.prize-5 {
-    background: linear-gradient(135deg, #a7d8f5, #64b9e9);
-    box-shadow: 0 0 15px 6px #367db3aa inset;
-    color: #144865;
-  }
-  .card-back.prize-10 {
-    background: linear-gradient(135deg, #e2dba6, #c5bf52);
-    box-shadow: 0 0 15px 6px #ada315aa inset;
-    color: #665c00;
-  }
-  .card-back.no-prize {
-    background: linear-gradient(135deg, #ffdad7, #ffbdbb);
-    box-shadow: 0 0 10px 4px #bc3535 inset;
-    color: #7f1a1a;
-  }
-  #shareBtn {
-    margin-top: 24px;
-    background: #c1392a;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-weight: 700;
-    padding: 14px 28px;
-    border-radius: 36px;
-    cursor: pointer;
-    font-size: 1.05rem;
-    box-shadow: 0 7px 25px #b23c34;
-    user-select: none;
-    width: 100%;
-    max-width: 260px;
-    transition: background-color 0.3s ease;
-  }
-  #shareBtn:hover:not(:disabled) {
-    background: #e2483b;
-    box-shadow: 0 8px 30px #dd5b5b;
-  }
-  #shareBtn:disabled {
-    background: #aa6666;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  #message {
-    margin-top: 20px;
-    min-height: 48px;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #3a3a3a;
-    user-select: none;
-    max-width: 260px;
-    text-align: center;
-  }
-  @media (max-width: 600px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Best Telecom - Holiday Mega Offer with WhatsApp Share</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 0;
+    }
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 10px 15px;
+      text-align: center;
+      user-select: none;
+    }
     header h1 {
-      font-size: 1.2rem;
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.12em;
+      text-shadow: 0 0 10px #ff8a80;
     }
     header p {
+      margin-top: 3px;
       font-size: 0.8rem;
+      font-weight: 600;
+      color: #ffbdbdcc;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 6px #ff8a80;
+    }
+    main {
+      position: relative;
+      z-index: 1;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 10px 50px;
     }
     .prize-section {
-      width: 100%;
+      background: rgba(255, 105, 105, 0.9);
+      border-radius: 16px;
+      padding: 22px 25px 30px;
+      box-shadow: 0 0 20px 4px #ff5252cc;
+      width: 360px;
       max-width: 95vw;
-      padding: 20px 18px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+    }
+    .prize-section h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.07em;
+      text-shadow: 0 0 8px #fff2f2;
+    }
+    .prize-section h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-shadow: 0 0 5px #fff1f1;
+    }
+    .chances-left {
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin-bottom: 18px;
+      user-select: none;
+    }
+    .chances-left strong {
+      color: #fff6b7;
+      text-shadow: 0 0 10px #ffb347;
     }
     .grid-3x3 {
-      gap: 8px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      perspective: 900px;
+    }
+    .card-container {
+      position: relative;
+      width: 100%;
+      padding-top: 100%; /* square shape */
+      cursor: pointer;
+      border-radius: 12px;
+      box-shadow: 0 6px 9px rgba(255, 80, 80, 0.6);
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .card-inner {
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      transition: transform 0.55s ease;
+      transform-style: preserve-3d;
+      box-shadow: inset 0 0 14px rgba(255,255,255,0.25);
+    }
+    .card-container.flipped .card-inner {
+      transform: rotateY(180deg);
     }
     .card-front, .card-back {
-      font-size: 2.3rem;
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      user-select: none;
+      box-shadow: inset 0 0 12px rgba(255,255,255,0.3);
+      font-weight: 700;
+    }
+    .card-front {
+      background: linear-gradient(145deg, #bd2e2e, #811313);
+      color: #fff;
+      box-shadow:
+        0 3px 12px rgba(255, 68, 68, 0.9),
+        inset 0 0 18px #e76c6c;
+      transition: background 0.25s ease;
+    }
+    .card-front:hover {
+      background: linear-gradient(145deg, #d44141, #a02323);
+      box-shadow:
+        0 7px 26px rgba(255, 105, 105, 0.95),
+        inset 0 0 30px #ef8b8b;
+    }
+    .card-back {
+      background: linear-gradient(145deg, #fff8dc, #fffdf4);
+      border: 2px solid transparent;
+      font-size: 2rem;
+      justify-content: center;
+      align-items: center;
+      transform: rotateY(180deg);
+      font-weight: 800;
+    }
+    .card-back.prize-2 {
+      background: linear-gradient(135deg, #c7f4cc, #9de59a);
+      box-shadow: 0 0 16px 7px #45b632aa inset;
+      color: #1c5d00;
+    }
+    .card-back.prize-5 {
+      background: linear-gradient(135deg, #a7d8f5, #64b9e9);
+      box-shadow: 0 0 16px 7px #2c82b9aa inset;
+      color: #0f3b58;
+    }
+    .card-back.prize-10 {
+      background: linear-gradient(135deg, #e2dba6, #c5bf52);
+      box-shadow: 0 0 16px 7px #a99425aa inset;
+      color: #594f00;
+    }
+    .card-back.no-prize {
+      background: linear-gradient(135deg, #ffdad7, #ffbdbb);
+      box-shadow: 0 0 11px 5px #a3323233 inset;
+      color: #7f1a1a;
+      font-weight: 900;
     }
     #shareBtn {
-      max-width: 100%;
-      font-size: 1rem;
-      padding: 12px 25px;
+      margin-top: 28px;
+      background: #ca3b3b;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 36px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 9px 28px #be3f3fcc;
+      user-select: none;
+      width: 100%;
+      max-width: 280px;
+      transition: background-color 0.3s ease;
+    }
+    #shareBtn:hover:not(:disabled) {
+      background: #e65454;
+      box-shadow: 0 10px 34px #da6767dd;
+    }
+    #shareBtn:disabled {
+      background: #b07c7c;
+      cursor: not-allowed;
+      box-shadow: none;
     }
     #message {
-      max-width: unset;
-      font-size: 1.05rem;
+      margin-top: 20px;
+      min-height: 48px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #222;
+      user-select: none;
+      max-width: 280px;
+      text-align: center;
+      background: #ffeee6cc;
+      border-radius: 12px;
+      padding: 8px 14px;
+      box-shadow: 0 0 8px #dd916eff;
     }
-  }
-</style>
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.15rem;
+      }
+      header p {
+        font-size: 0.75rem;
+      }
+      .prize-section {
+        width: 100%;
+        max-width: 95vw;
+        padding: 20px 20px 30px;
+      }
+      .grid-3x3 {
+        gap: 8px;
+      }
+      .card-front, .card-back {
+        font-size: 1.8rem;
+      }
+      #shareBtn {
+        max-width: 100%;
+        font-size: 1rem;
+        padding: 12px 25px;
+      }
+      #message {
+        max-width: unset;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 <header>
@@ -251,9 +259,7 @@
   <section class="prize-section" aria-label="Prize Flip Grid">
     <h2>🎁 Win Exciting Prizes!</h2>
     <h3>Get 3 Chances Per Share</h3>
-    <p class="chances-left" aria-live="polite" aria-atomic="true">
-      Chances left: <strong id="chancesLeft">3</strong>
-    </p>
+    <p class="chances-left" aria-live="polite" aria-atomic="true">Chances left: <strong id="chancesLeft">3</strong></p>
     <div class="grid-3x3" role="grid" aria-label="Prize cards grid"></div>
     <button id="shareBtn" aria-describedby="message">Share Website to Get 3 Chances</button>
     <p id="message" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -278,7 +284,7 @@
 
     let chancesLeft = MAX_CHANCES;
     let flippedIndexes = new Set();
-    let WIN_POSITIONS = new Map(); // index -> prize percentage
+    let WIN_POSITIONS = new Map();
 
     function initPrizePositions() {
       WIN_POSITIONS.clear();
@@ -300,7 +306,7 @@
           return;
         }
       }
-      chancesLeft = MAX_CHANCES;
+      chancesLeft = 0; // Start with 0, must share to get chances
     }
 
     function saveChances() {
@@ -371,13 +377,15 @@
 
       if (WIN_POSITIONS.has(index)) {
         const winPerc = WIN_POSITIONS.get(index);
-        messageEl.textContent = `🎉 Congrats! You won ${winPerc}%.`;
-
-        const now = new Date();
-        const timestamp = now.toLocaleString();
-        const waMessage = encodeURIComponent(`YOU WIN ${winPerc}% (${timestamp})`);
-        const waUrl = `https://wa.me/${encodeURIComponent(targetWhatsAppNumber)}?text=${waMessage}`;
-        window.open(waUrl, "_blank");
+        const confirmMsg = `🎉 Congrats! You won ${winPerc}%. Do you want to share this win on WhatsApp?`;
+        if (confirm(confirmMsg)) {
+          const now = new Date();
+          const timestamp = now.toLocaleString();
+          const waMessage = encodeURIComponent(`YOU WIN ${winPerc}% (${timestamp})`);
+          const waUrl = `https://wa.me/${encodeURIComponent(targetWhatsAppNumber)}?text=${waMessage}`;
+          window.open(waUrl, "_blank");
+        }
+        messageEl.textContent = `🎉 You won ${winPerc}%.`;
       } else {
         messageEl.textContent = "🙁 Sorry, no prize here.";
       }
@@ -397,7 +405,7 @@
 
     function resetGame() {
       initPrizePositions();
-      chancesLeft = MAX_CHANCES;
+      chancesLeft = 0; // reset to 0, force share to get chance
       saveChances();
       renderGrid();
       updateChancesUI();
@@ -427,6 +435,7 @@
       }
     });
 
+    // Initialize app
     function init() {
       initPrizePositions();
       loadChances();
