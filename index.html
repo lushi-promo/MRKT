@@ -28,8 +28,10 @@
   }
   header {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     padding: 12px 15px;
+    background: rgba(255 105 105 / 0.85);
+    box-shadow: 0 0 15px 4px #ff5353cc;
     text-align: center;
     user-select: none;
   }
@@ -37,26 +39,97 @@
     margin: 0;
     font-weight: 700;
     font-size: 1.25rem;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 10px #ff8a80;
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 10px #fff0f0;
   }
-  header p {
-    margin-top: 3px;
-    font-size: 0.8rem;
+  header nav {
+    margin-top: 6px;
+  }
+  header nav button {
+    background: transparent;
+    border: none;
+    color: #ffeaea;
     font-weight: 600;
-    color: #ffbdbdcc;
-    letter-spacing: 0.05em;
-    text-shadow: 0 0 6px #ff8a80;
+    letter-spacing: 0.1em;
+    margin: 0 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  header nav button:hover,
+  header nav button:focus {
+    background-color: rgba(255,255,255,0.2);
+    outline: none;
   }
   main {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     padding: 20px 10px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+  .carousel {
+    width: 100%;
+    max-width: 800px;
+    height: 270px;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 0 30px #ff4d4dcc;
+    margin-bottom: 40px;
+    position: relative;
+    user-select: none;
+  }
+  .carousel img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: opacity 0.6s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  .carousel img.active {
+    opacity: 1;
+    position: relative;
+  }
+  .carousel-controls {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+  .carousel-controls button {
+    background: rgba(255 105 105 / 0.8);
+    border: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .carousel-controls button.active {
+    background: #fff;
+  }
+  .carousel-controls button:hover,
+  .carousel-controls button:focus {
+    background: #fff;
+    outline: none;
+  }
+
+  /* Prize section */
   .prize-section {
     background: rgba(255, 105, 105, 0.95);
     border-radius: 20px;
@@ -76,7 +149,6 @@
     margin-bottom: 8px;
     letter-spacing: 0.06em;
     text-shadow: 0 0 8px #fff2f2;
-    user-select: none;
   }
   .prize-section h3 {
     font-size: 1.1rem;
@@ -85,7 +157,6 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-shadow: 0 0 5px #fff1f1;
-    user-select: none;
   }
   .chances-left {
     font-weight: 700;
@@ -234,6 +305,11 @@
     header p {
       font-size: 0.75rem;
     }
+    main {
+      padding: 20px 10px 40px;
+      max-width: 100vw;
+      min-height: auto;
+    }
     .prize-section {
       width: 100%;
       max-width: 95vw;
@@ -255,14 +331,78 @@
       font-size: 1.05rem;
     }
   }
+
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  .modal-overlay.active {
+    display: flex;
+  }
+  .modal-content {
+    background: #fff;
+    color: #222;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90vw;
+    padding: 24px 28px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    position: relative;
+  }
+  .modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: #ca3b3b;
+  }
+  .modal-content p {
+    line-height: 1.4;
+    font-weight: 500;
+    color: #333;
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: #ca3b3b;
+    user-select: none;
+  }
+  .modal-close:hover,
+  .modal-close:focus {
+    color: #e65454;
+    outline: none;
+  }
 </style>
 </head>
 <body>
 <header>
   <h1>Best Telecom</h1>
   <p>Christmas &amp; New Year Special 🎅✨</p>
+  <nav role="navigation" aria-label="Main menu">
+    <button id="homeBtn" type="button">Home</button>
+    <button id="aboutBtn" type="button">About Us</button>
+  </nav>
 </header>
 <main>
+  <section class="carousel" aria-label="Mobile shop image carousel" tabindex="0" style="position:relative; max-width:800px; width:100%; height:270px; margin-bottom:48px; border-radius:16px; overflow:hidden; box-shadow: 0 0 30px #ff4d4dcc;">
+    <img src="https://images.unsplash.com/photo-1512499617640-c2f9990132bc?auto=format&fit=crop&w=1470&q=80" alt="Mobile shop 1" class="active" />
+    <img src="https://images.unsplash.com/photo-1516669395377-5b7a44cc2c1d?auto=format&fit=crop&w=1470&q=80" alt="Mobile shop 2" />
+    <img src="https://images.unsplash.com/photo-1568458170514-3bc747ade78b?auto=format&fit=crop&w=1470&q=80" alt="Mobile shop 3" />
+    <div class="carousel-controls" aria-label="Carousel navigation buttons" style="position:absolute; bottom:14px; left:50%; transform: translateX(-50%); display:flex; gap:10px; z-index:10;">
+      <!-- controls dynamically injected -->
+    </div>
+  </section>
+
   <section class="prize-section" aria-label="Prize Flip Grid">
     <h2>🎁 Win Exciting Prizes!</h2>
     <h3>Get 3 Chances Per Share</h3>
@@ -272,8 +412,72 @@
     <p id="message" class="hidden" role="status" aria-live="polite" aria-atomic="true"></p>
   </section>
 </main>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+  <div class="modal-content">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+  </div>
+</div>
+
 <script>
   (function () {
+    // Carousel part
+    const carousel = document.querySelector('.carousel');
+    const imgs = carousel.querySelectorAll('img');
+    const controls = carousel.querySelector('.carousel-controls');
+
+    let currentIndex = 0;
+    const slideCount = imgs.length;
+
+    // Create controls buttons for carousel
+    for(let i=0; i<slideCount; i++){
+      const btn = document.createElement('button');
+      btn.setAttribute('aria-label', `Slide ${i+1}`);
+      btn.type = "button";
+      controls.appendChild(btn);
+      btn.addEventListener('click', () => {
+        goToSlide(i);
+      });
+    }
+    const controlButtons = controls.querySelectorAll('button');
+
+    function goToSlide(index) {
+      imgs.forEach((img,i) => {
+        img.classList.toggle('active', i === index);
+      });
+      controlButtons.forEach((btn,i) => {
+        btn.classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
+    goToSlide(0);
+
+    // Auto slide every 5 seconds
+    let slideInterval = setInterval(() => {
+      let nextIndex = (currentIndex + 1) % slideCount;
+      goToSlide(nextIndex);
+    }, 5000);
+
+    // Pause carousel when focus inside (for accessibility)
+    carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    carousel.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(() => {
+        let nextIndex = (currentIndex + 1) % slideCount;
+        goToSlide(nextIndex);
+      }, 5000);
+    });
+    carousel.addEventListener('focusin', () => clearInterval(slideInterval));
+    carousel.addEventListener('focusout', () => {
+      slideInterval = setInterval(() => {
+        let nextIndex = (currentIndex + 1) % slideCount;
+        goToSlide(nextIndex);
+      }, 5000);
+    });
+
+    // Prize game part - no changes in logic per user request, only hid message when empty
     const MAX_CHANCES = 3;
     const STORAGE_KEY = "holiday_chances_left";
     const WIN_EMOJI_MAP = {
@@ -289,11 +493,10 @@
     const shareBtn = document.getElementById("shareBtn");
     const messageEl = document.getElementById("message");
 
-    let chancesLeft = 0; // User must share to get chances
+    let chancesLeft = 0; // Start at 0, must share to get chances
     let flippedIndexes = new Set();
     let WIN_POSITIONS = new Map();
 
-    // Initialize 3 random unique prize positions with random percentage
     function initPrizePositions() {
       WIN_POSITIONS.clear();
       const possiblePercentages = [2, 5, 10];
@@ -305,7 +508,6 @@
       }
     }
 
-    // Load chances or default 0
     function loadChances() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored !== null) {
@@ -318,12 +520,10 @@
       chancesLeft = 0;
     }
 
-    // Save chances to localStorage
     function saveChances() {
       localStorage.setItem(STORAGE_KEY, chancesLeft);
     }
 
-    // Render 3x3 card grid
     function renderGrid() {
       gridContainer.innerHTML = "";
       for (let i = 0; i < 9; i++) {
@@ -457,6 +657,43 @@
       }
     });
 
+    // Modal logic
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const homeBtn = document.getElementById('homeBtn');
+    const aboutBtn = document.getElementById('aboutBtn');
+
+    function openModal(title, desc) {
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modal.classList.add('active');
+      modalCloseBtn.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+      if(e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+    homeBtn.addEventListener('click', () => {
+      openModal("Welcome to Best Telecom", "Discover the latest mobile phones and amazing offers in our store. Enjoy a hassle-free shopping experience with expert customer service.");
+    });
+    aboutBtn.addEventListener('click', () => {
+      openModal("About Us", "Best Telecom is a leading mobile phone store committed to delivering quality devices at great prices. Our mission is to connect you with the best tech and unmatched deals during festive seasons.");
+    });
+
+    // Initialize app
     function init() {
       initPrizePositions();
       loadChances();
@@ -467,5 +704,14 @@
     init();
   })();
 </script>
+
 </body>
+<!-- Modal HTML -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+  <div class="modal-content">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+  </div>
+</div>
 </html>
