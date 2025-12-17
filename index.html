@@ -22,27 +22,7 @@
       min-height: 100vh;
     }
 
-    /* Page background with festive theme (snow + bokeh lights) */
-    body::before {
-      content: "";
-      pointer-events: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.3) 2px, transparent 3px),
-        radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 2px),
-        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-      background-size: 50px 50px, 30px 30px, 100px 100px;
-      background-position: 0 0, 15px 15px, 50px 50px;
-      z-index: 0;
-      animation: snowmove 20s linear infinite;
-      filter: drop-shadow(0 0 5px #ff4f4f);
-    }
-
-    @keyframes snowmove {
-      0% {background-position: 0 0, 15px 15px, 50px 50px;}
-      100% {background-position: 0 50px, 15px 65px, 50px 150px;}
-    }
+    /* Removed the black overlay with red shadow */
 
     header {
       background: linear-gradient(45deg, #d72631, #f46036);
@@ -100,7 +80,6 @@
         0 0 50px 15px #ff3f3f66;
       filter: drop-shadow(0 0 10px #ff0000);
       min-height: 320px;
-      /* Ensure visible on mobile */
       width: 100%;
     }
     @media (max-width: 900px) {
@@ -131,7 +110,7 @@
       flex-direction: column;
       align-items: center;
       position: relative;
-      overflow: visible; /* Fix popup cutoff */
+      overflow: visible;
       user-select: none;
       max-width: 450px;
       min-height: 400px;
@@ -524,7 +503,7 @@
         return a;
       }
 
-      // WhatsApp (Mobile URL works fine in browser and WhatsApp app)
+      // WhatsApp Share
       btnContainer.appendChild(createShareLink(
         `https://wa.me/?text=${shareText}${encodedUrl}`,
         "Share on WhatsApp",
@@ -532,7 +511,7 @@
         "#128C7E"
       ));
 
-      // Telegram
+      // Telegram Share
       btnContainer.appendChild(createShareLink(
         `https://telegram.me/share/url?url=${encodedUrl}&text=${shareText}`,
         "Share on Telegram",
@@ -540,7 +519,7 @@
         "#107AC9"
       ));
 
-      // Facebook
+      // Facebook Share
       btnContainer.appendChild(createShareLink(
         `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
         "Share on Facebook",
@@ -598,7 +577,7 @@
       closeBtn.addEventListener("click", () => {
         document.body.removeChild(overlay);
         document.body.style.overflow = "";
-        setMessage(""); 
+        setMessage("");
       });
 
       box.appendChild(btnContainer);
