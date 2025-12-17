@@ -2,62 +2,212 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Chance to Win</title>
+  <title>🎄🎉 Holiday Crazy Offer - Chance to Win! 🎉🎄</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    /* Reset & basics */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
     body {
-      font-family: Arial, sans-serif;
-      max-width: 420px;
-      margin: 40px auto;
-      text-align: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background: #f9f9f9;
     }
+
+    .container {
+      background: radial-gradient(circle at top left, #d72631, #f46036);
+      border-radius: 25px;
+      max-width: 460px;
+      width: 100%;
+      padding: 30px 40px;
+      box-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff4500,
+        0 0 30px #ff6347,
+        0 0 40px #ff4500,
+        0 0 50px #ff0000;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    /* Decorative blinking lights */
+    .lights {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      pointer-events: none;
+      border-radius: 25px;
+      box-shadow:
+        0 0 10px #ffef96,
+        0 0 20px #f8e16c,
+        0 0 30px #ffbf00;
+      animation: flicker 3s infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes flicker {
+      0%   {opacity: 1;}
+      50%  {opacity: 0.6;}
+      100% {opacity: 1;}
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      letter-spacing: 3px;
+      text-shadow:
+        0 0 5px #fff,
+        0 0 10px #ffd700,
+        0 0 20px #ffa500;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      color: #ffeaa7;
+      letter-spacing: 2px;
+      text-shadow: 0 0 7px #ff9f1c;
+    }
+
+    p.chances {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      text-shadow: 0 0 7px #ff6f61;
+    }
+
     button {
-      padding: 10px 20px;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 10px 10px 10px 0;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 50px;
       cursor: pointer;
-      margin: 5px 10px 5px 0;
-      border: 1px solid #007bff;
-      background: #007bff;
-      color: white;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+      color: #fff;
+      background: linear-gradient(45deg, #ffd194, #d93a3a);
+      box-shadow:
+        0 4px 15px rgb(255 145 145 / 0.7),
+        inset 0 -3px 5px rgb(255 255 255 / 0.3);
+      text-shadow: 0 0 5px #000;
+      transition: all 0.3s ease;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
+
     button:disabled {
-      background: #ccc;
-      border-color: #ccc;
+      background: #888;
+      box-shadow: none;
       cursor: not-allowed;
+      color: #ccc;
+      text-shadow: none;
     }
+
     button:hover:not(:disabled) {
-      background: #0056b3;
+      background: linear-gradient(45deg, #ffafaf, #d93a3a);
+      box-shadow:
+        0 6px 20px rgb(255 80 80 / 0.85),
+        inset 0 -3px 8px rgb(255 255 255 / 0.5);
+      transform: scale(1.05);
     }
-    .message {
-      margin-top: 20px;
-      font-weight: bold;
-      min-height: 24px;
-    }
-    .note {
-      font-size: 12px;
-      color: #666;
+
+    #message {
       margin-top: 30px;
+      min-height: 40px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #fee440;
+      text-shadow:
+        0 0 7px #ffec98,
+        0 0 20px #ffb347;
+    }
+
+    .note {
+      margin-top: 35px;
+      color: #ffddb7;
+      font-size: 0.85rem;
+      letter-spacing: 1.1px;
+      text-shadow: 0 0 5px #8b0000;
+    }
+
+    .share-url {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      word-break: break-all;
+      text-shadow: 0 0 4px #741313;
+      color: #ff9a9a;
+      cursor: text;
+      user-select: all;
+    }
+
+    /* Responsive typography and layout */
+    @media (max-width: 480px) {
+      .container {
+        padding: 25px 20px;
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      p.chances {
+        font-size: 1.1rem;
+      }
+      button {
+        font-size: 1rem;
+        padding: 12px 24px;
+        margin: 8px 6px 8px 0;
+        border-radius: 40px;
+      }
+      #message {
+        font-size: 1.15rem;
+        margin-top: 25px;
+      }
+      .note {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Chance to Win 🎉</h1>
-  <p>Chances left: <strong id="chancesLeft">0</strong></p>
-  <button id="playBtn" disabled>Play</button>
-  <button id="shareBtn">Share Website</button>
-  <p class="message" id="message"></p>
-  <p class="note">* You get 3 chances each time you share this website.</p>
-  <p class="note">Share URL: <span id="shareUrl"></span></p>
+  <div class="container" role="main" aria-label="Holiday offer chance to win game">
+    <div class="lights" aria-hidden="true"></div>
+    <h1>🎅 Holiday Crazy Offer! 🎄</h1>
+    <div class="subtitle">New Year & Christmas Special</div>
+    <p class="chances">Chances left: <strong id="chancesLeft" aria-live="polite" aria-atomic="true">0</strong></p>
+    <button id="playBtn" disabled aria-disabled="true" aria-describedby="message">Play</button>
+    <button id="shareBtn" aria-describedby="message">Share Website</button>
+    <p id="message" role="status" aria-live="polite"></p>
+    <p class="note">* You get 3 chances each time you share this website.</p>
+    <p class="note share-url" title="Share this URL" tabindex="0" aria-label="Share URL to copy or share" id="shareUrl"></p>
+  </div>
 
 <script>
   (function(){
     const MAX_CHANCES = 3;
-    const STORAGE_KEY = "chances_left";
+    const STORAGE_KEY = "holiday_chances_left";
     const WIN_MESSAGES = [
       "🎉 You won a free gift!",
       "🎁 Congrats! You've got a discount!",
@@ -80,7 +230,11 @@
     // Load chances from localStorage on page load
     const storedChances = localStorage.getItem(STORAGE_KEY);
     if(storedChances !== null) {
-      chancesLeft = Number(storedChances);
+      let val = Number(storedChances);
+      if(!isNaN(val) && val >= 0 && val <= MAX_CHANCES) {
+        chancesLeft = val;
+        if(chancesLeft > 0) hasShared = true;
+      }
     }
     updateUI();
 
@@ -94,30 +248,41 @@
       chancesLeft = MAX_CHANCES;
       localStorage.setItem(STORAGE_KEY, chancesLeft);
       updateUI();
-      messageEl.textContent = "Thanks for sharing! You have 3 chances now.";
-      playBtn.disabled = false;
+      setMessage("Thanks for sharing! You have 3 chances now.");
     });
 
     playBtn.addEventListener("click", () => {
       if(chancesLeft <= 0) {
-        messageEl.textContent = "No chances left. Please share to get 3 new chances.";
+        setMessage("No chances left. Please share to get 3 new chances.");
         playBtn.disabled = true;
+        playBtn.setAttribute("aria-disabled", "true");
         return;
       }
       // Random win message
       const msg = WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)];
-      messageEl.textContent = msg;
+      setMessage(msg);
       chancesLeft--;
       localStorage.setItem(STORAGE_KEY, chancesLeft);
-      updateUI();
       if(chancesLeft === 0) {
         playBtn.disabled = true;
+        playBtn.setAttribute("aria-disabled", "true");
       }
+      updateUI();
     });
 
     function updateUI() {
       chancesLeftEl.textContent = chancesLeft;
-      playBtn.disabled = chancesLeft === 0;
+      if(chancesLeft > 0) {
+        playBtn.disabled = false;
+        playBtn.setAttribute("aria-disabled", "false");
+      } else {
+        playBtn.disabled = true;
+        playBtn.setAttribute("aria-disabled", "true");
+      }
+    }
+
+    function setMessage(text) {
+      messageEl.textContent = text;
     }
   })();
 </script>
