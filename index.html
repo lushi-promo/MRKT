@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Best Telecom - Holiday Mega Offer with WhatsApp Share</title>
 <style>
-  /* Reset */
   *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -13,15 +12,13 @@
     margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
-    /* Background image from your last */
-    background: url('https://i.imgur.com/zFzMaRW.jpg') no-repeat center center fixed;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     display: flex;
     flex-direction: column;
   }
-
-  /* Overlay to darken background for readability */
+  /* Overlay so content is visible */
   body::before {
     content: "";
     position: fixed;
@@ -29,7 +26,6 @@
     background: rgba(0,0,0,0.6);
     z-index: 0;
   }
-
   header {
     position: relative;
     background: transparent;
@@ -53,7 +49,6 @@
     letter-spacing: 0.05em;
     text-shadow: 0 0 6px #ff8a80;
   }
-
   main {
     position: relative;
     z-index: 1;
@@ -63,9 +58,8 @@
     align-items: center;
     padding: 20px 10px 50px;
   }
-
   .prize-section {
-    background: rgba(255, 105, 105, 0.85);
+    background: rgba(255,105,105,0.85);
     border-radius: 16px;
     padding: 22px 20px 30px;
     box-shadow: 0 0 15px 2px #ff5252;
@@ -101,8 +95,6 @@
     color: #fff6b7;
     text-shadow: 0 0 10px #ffb347;
   }
-
-  /* 3x3 grid for cards */
   .grid-3x3 {
     width: 100%;
     display: grid;
@@ -110,7 +102,6 @@
     gap: 10px;
     perspective: 900px;
   }
-
   .card-container {
     position: relative;
     width: 100%;
@@ -131,7 +122,6 @@
   .card-container.flipped .card-inner {
     transform: rotateY(180deg);
   }
-
   .card-front, .card-back {
     position: absolute;
     inset: 0;
@@ -158,11 +148,10 @@
       0 6px 22px rgba(255, 75, 70, 0.85),
       inset 0 0 25px #f98484;
   }
-
   .card-back {
     background: linear-gradient(145deg, #fff8dc, #fffdf4);
     border: 2px solid transparent;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     justify-content: center;
     align-items: center;
     transform: rotateY(180deg);
@@ -187,7 +176,6 @@
     box-shadow: 0 0 10px 4px #bc3535 inset;
     color: #7f1a1a;
   }
-
   #shareBtn {
     margin-top: 24px;
     background: #c1392a;
@@ -214,7 +202,6 @@
     cursor: not-allowed;
     box-shadow: none;
   }
-
   #message {
     margin-top: 20px;
     min-height: 48px;
@@ -225,14 +212,12 @@
     max-width: 260px;
     text-align: center;
   }
-
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     header h1 {
-      font-size: 1.25rem;
-      letter-spacing: 0.07em;
+      font-size: 1.2rem;
     }
     header p {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
     }
     .prize-section {
       width: 100%;
@@ -243,7 +228,7 @@
       gap: 8px;
     }
     .card-front, .card-back {
-      font-size: 2rem;
+      font-size: 2.3rem;
     }
     #shareBtn {
       max-width: 100%;
@@ -262,7 +247,6 @@
   <h1>Best Telecom</h1>
   <p>Christmas &amp; New Year Special 🎅✨</p>
 </header>
-
 <main>
   <section class="prize-section" aria-label="Prize Flip Grid">
     <h2>🎁 Win Exciting Prizes!</h2>
@@ -275,19 +259,16 @@
     <p id="message" role="status" aria-live="polite" aria-atomic="true"></p>
   </section>
 </main>
-
 <script>
   (function () {
     const MAX_CHANCES = 3;
     const STORAGE_KEY = "holiday_chances_left";
-    const WIN_EMOJIS = {2:"2%",5:"5%",10:"10%"};
     const WIN_EMOJI_MAP = {
       2: "prize-2",
       5: "prize-5",
       10: "prize-10"
     };
     const NO_PRIZE_EMOJI = "❌";
-
     const targetWhatsAppNumber = "+243851126761";
 
     const gridContainer = document.querySelector(".grid-3x3");
@@ -297,21 +278,19 @@
 
     let chancesLeft = MAX_CHANCES;
     let flippedIndexes = new Set();
-    let WIN_POSITIONS = new Map(); // index -> percentage e.g. 2,5 or 10
+    let WIN_POSITIONS = new Map(); // index -> prize percentage
 
-    // Initialize 3 random unique prize positions with random percentage each
     function initPrizePositions() {
       WIN_POSITIONS.clear();
-      const possiblePercentages = [2,5,10];
+      const possiblePercentages = [2, 5, 10];
       while (WIN_POSITIONS.size < 3) {
-        let idx = Math.floor(Math.random() * 9);
+        const idx = Math.floor(Math.random() * 9);
         if (WIN_POSITIONS.has(idx)) continue;
-        let perc = possiblePercentages[Math.floor(Math.random() * possiblePercentages.length)];
+        const perc = possiblePercentages[Math.floor(Math.random() * possiblePercentages.length)];
         WIN_POSITIONS.set(idx, perc);
       }
     }
 
-    // Load chances or reset to MAX if none
     function loadChances() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored !== null) {
@@ -324,12 +303,10 @@
       chancesLeft = MAX_CHANCES;
     }
 
-    // Save chances to localStorage
     function saveChances() {
       localStorage.setItem(STORAGE_KEY, chancesLeft);
     }
 
-    // Build the card grid
     function renderGrid() {
       gridContainer.innerHTML = "";
       for (let i = 0; i < 9; i++) {
@@ -396,19 +373,15 @@
         const winPerc = WIN_POSITIONS.get(index);
         messageEl.textContent = `🎉 Congrats! You won ${winPerc}%.`;
 
-        // Compose WhatsApp message with timestamp
         const now = new Date();
         const timestamp = now.toLocaleString();
         const waMessage = encodeURIComponent(`YOU WIN ${winPerc}% (${timestamp})`);
         const waUrl = `https://wa.me/${encodeURIComponent(targetWhatsAppNumber)}?text=${waMessage}`;
-
-        // Open WhatsApp in new tab/window
         window.open(waUrl, "_blank");
       } else {
         messageEl.textContent = "🙁 Sorry, no prize here.";
       }
 
-      // After all chances used, reset grid & shuffle prizes after delay
       if (chancesLeft === 0) {
         setTimeout(() => {
           messageEl.textContent = "Chances reset! New prizes shuffled, good luck!";
@@ -454,7 +427,6 @@
       }
     });
 
-    // Initialization
     function init() {
       initPrizePositions();
       loadChances();
@@ -463,3 +435,6 @@
     }
     init();
   })();
+</script>
+</body>
+</html>
