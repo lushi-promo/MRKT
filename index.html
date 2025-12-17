@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Best Telecom - Holiday Mega Offer</title>
+<title>Best Telecom - Holiday Mega Offer with WhatsApp Share</title>
 <style>
   /* Reset */
   *, *::before, *::after {
@@ -13,7 +13,8 @@
     margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
-    background: url('https://cdn.pixabay.com/photo/2021/10/10/15/46/abstract-6691600_960_720.jpg') no-repeat center center fixed;
+    /* Background image from your last */
+    background: url('https://i.imgur.com/zFzMaRW.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     display: flex;
@@ -25,7 +26,7 @@
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.6);
     z-index: 0;
   }
 
@@ -40,7 +41,7 @@
   header h1 {
     margin: 0;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     letter-spacing: 0.1em;
     text-shadow: 0 0 10px #ff8a80;
   }
@@ -60,13 +61,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 20px 10px 50px;
   }
 
   .prize-section {
-    background: rgba(255 105 105 / 0.85);
+    background: rgba(255, 105, 105, 0.85);
     border-radius: 16px;
-    padding: 20px 20px 30px;
+    padding: 22px 20px 30px;
     box-shadow: 0 0 15px 2px #ff5252;
     width: 320px;
     max-width: 90vw;
@@ -76,16 +77,16 @@
     user-select: none;
   }
   .prize-section h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 6px;
     letter-spacing: 0.06em;
     text-shadow: 0 0 7px #fff2f2;
   }
   .prize-section h3 {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-shadow: 0 0 5px #fff1f1;
@@ -118,6 +119,7 @@
     border-radius: 12px;
     box-shadow: 0 5px 7px rgba(255, 90, 90, 0.6);
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
   }
   .card-inner {
     position: absolute;
@@ -138,7 +140,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.2rem;
+    font-size: 3rem;
     user-select: none;
     box-shadow: inset 0 0 12px rgba(255,255,255,0.3);
   }
@@ -151,50 +153,60 @@
     transition: background 0.3s ease;
   }
   .card-front:hover {
-    background: linear-gradient(150deg, #d55959, #9c2a2a);
+    background: linear-gradient(150deg, #d45555, #9c2a2a);
     box-shadow:
-      0 6px 22px rgba(255, 95, 52, 0.9),
+      0 6px 22px rgba(255, 75, 70, 0.85),
       inset 0 0 25px #f98484;
   }
 
   .card-back {
-    background: linear-gradient(145deg, #fff8dc, #fffafa);
-    color: #2d5300;
-    transform: rotateY(180deg);
-    font-size: 2.1rem;
+    background: linear-gradient(145deg, #fff8dc, #fffdf4);
+    border: 2px solid transparent;
+    font-size: 2.4rem;
     justify-content: center;
     align-items: center;
+    transform: rotateY(180deg);
   }
-  .card-back.prize {
-    background: linear-gradient(135deg, #c1f1a6, #83db5a);
-    box-shadow: 0 0 10px 5px #71c02eaa inset;
-    color: #194500;
+  .card-back.prize-2 {
+    background: linear-gradient(135deg, #c7f4cc, #9de59a);
+    box-shadow: 0 0 15px 6px #52a634aa inset;
+    color: #1a5900;
+  }
+  .card-back.prize-5 {
+    background: linear-gradient(135deg, #a7d8f5, #64b9e9);
+    box-shadow: 0 0 15px 6px #367db3aa inset;
+    color: #144865;
+  }
+  .card-back.prize-10 {
+    background: linear-gradient(135deg, #e2dba6, #c5bf52);
+    box-shadow: 0 0 15px 6px #ada315aa inset;
+    color: #665c00;
   }
   .card-back.no-prize {
     background: linear-gradient(135deg, #ffdad7, #ffbdbb);
-    box-shadow: 0 0 8px 3px #bc3535 inset;
+    box-shadow: 0 0 10px 4px #bc3535 inset;
     color: #7f1a1a;
   }
 
   #shareBtn {
     margin-top: 24px;
-    background: #db3838;
+    background: #c1392a;
     border: none;
     outline: none;
     color: #fff;
     font-weight: 700;
-    padding: 12px 28px;
+    padding: 14px 28px;
     border-radius: 36px;
     cursor: pointer;
     font-size: 1.05rem;
-    box-shadow: 0 7px 25px #d03939;
+    box-shadow: 0 7px 25px #b23c34;
     user-select: none;
     width: 100%;
     max-width: 260px;
     transition: background-color 0.3s ease;
   }
   #shareBtn:hover:not(:disabled) {
-    background: #e95353;
+    background: #e2483b;
     box-shadow: 0 8px 30px #dd5b5b;
   }
   #shareBtn:disabled {
@@ -205,10 +217,10 @@
 
   #message {
     margin-top: 20px;
-    min-height: 44px;
+    min-height: 48px;
     font-size: 1.15rem;
     font-weight: 700;
-    color: #fff9b0;
+    color: #3a3a3a;
     user-select: none;
     max-width: 260px;
     text-align: center;
@@ -231,12 +243,12 @@
       gap: 8px;
     }
     .card-front, .card-back {
-      font-size: 1.7rem;
+      font-size: 2rem;
     }
     #shareBtn {
       max-width: 100%;
       font-size: 1rem;
-      padding: 11px 24px;
+      padding: 12px 25px;
     }
     #message {
       max-width: unset;
@@ -268,8 +280,16 @@
   (function () {
     const MAX_CHANCES = 3;
     const STORAGE_KEY = "holiday_chances_left";
-    const WINNER_EMOJI = "🎉";
+    const WIN_EMOJIS = {2:"2%",5:"5%",10:"10%"};
+    const WIN_EMOJI_MAP = {
+      2: "prize-2",
+      5: "prize-5",
+      10: "prize-10"
+    };
     const NO_PRIZE_EMOJI = "❌";
+
+    const targetWhatsAppNumber = "+243851126761";
+
     const gridContainer = document.querySelector(".grid-3x3");
     const chancesLeftEl = document.getElementById("chancesLeft");
     const shareBtn = document.getElementById("shareBtn");
@@ -277,13 +297,17 @@
 
     let chancesLeft = MAX_CHANCES;
     let flippedIndexes = new Set();
-    let WIN_POSITIONS = new Set();
+    let WIN_POSITIONS = new Map(); // index -> percentage e.g. 2,5 or 10
 
-    // Initialize 3 random prize positions
+    // Initialize 3 random unique prize positions with random percentage each
     function initPrizePositions() {
       WIN_POSITIONS.clear();
+      const possiblePercentages = [2,5,10];
       while (WIN_POSITIONS.size < 3) {
-        WIN_POSITIONS.add(Math.floor(Math.random() * 9));
+        let idx = Math.floor(Math.random() * 9);
+        if (WIN_POSITIONS.has(idx)) continue;
+        let perc = possiblePercentages[Math.floor(Math.random() * possiblePercentages.length)];
+        WIN_POSITIONS.set(idx, perc);
       }
     }
 
@@ -326,8 +350,9 @@
         const back = document.createElement("div");
         back.className = "card-back";
         if (WIN_POSITIONS.has(i)) {
-          back.classList.add("prize");
-          back.textContent = WINNER_EMOJI;
+          const perc = WIN_POSITIONS.get(i);
+          back.classList.add(WIN_EMOJI_MAP[perc]);
+          back.textContent = perc + "%";
         } else {
           back.classList.add("no-prize");
           back.textContent = NO_PRIZE_EMOJI;
@@ -368,16 +393,27 @@
       updateChancesUI();
 
       if (WIN_POSITIONS.has(index)) {
-        messageEl.textContent = "🎉 Congrats! You found a prize!";
+        const winPerc = WIN_POSITIONS.get(index);
+        messageEl.textContent = `🎉 Congrats! You won ${winPerc}%.`;
+
+        // Compose WhatsApp message with timestamp
+        const now = new Date();
+        const timestamp = now.toLocaleString();
+        const waMessage = encodeURIComponent(`YOU WIN ${winPerc}% (${timestamp})`);
+        const waUrl = `https://wa.me/${encodeURIComponent(targetWhatsAppNumber)}?text=${waMessage}`;
+
+        // Open WhatsApp in new tab/window
+        window.open(waUrl, "_blank");
       } else {
         messageEl.textContent = "🙁 Sorry, no prize here.";
       }
 
+      // After all chances used, reset grid & shuffle prizes after delay
       if (chancesLeft === 0) {
         setTimeout(() => {
-          messageEl.textContent = "Chances reset! New prizes shuffled, have fun!";
+          messageEl.textContent = "Chances reset! New prizes shuffled, good luck!";
           resetGame();
-        }, 1700);
+        }, 1800);
       }
     }
 
@@ -418,6 +454,7 @@
       }
     });
 
+    // Initialization
     function init() {
       initPrizePositions();
       loadChances();
@@ -426,5 +463,3 @@
     }
     init();
   })();
-</script>
-</body>
