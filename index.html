@@ -2,210 +2,336 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>🎄🎉 Holiday Crazy Offer - Chance to Win! 🎉🎄</title>
+  <title>🎄🎉 Holiday Crazy Offer - Full Page</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Reset & basics */
-    * {
+    /* Global reset */
+    *, *::before, *::after {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      transition: all 0.3s ease;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
-    body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        radial-gradient(circle at center, #050505 0%, #0c0c0c 100%);
       color: #fff;
-      min-height: 100vh;
+      overflow-x: hidden;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    .container {
-      background: radial-gradient(circle at top left, #d72631, #f46036);
+    /* Page background with festive theme (snow + bokeh lights) */
+    body::before {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.3) 2px, transparent 3px),
+        radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 50px 50px, 30px 30px, 100px 100px;
+      background-position: 0 0, 15px 15px, 50px 50px;
+      z-index: 0;
+      animation: snowmove 20s linear infinite;
+      filter: drop-shadow(0 0 5px #ff4f4f);
+    }
+
+    @keyframes snowmove {
+      0% {background-position: 0 0, 15px 15px, 50px 50px;}
+      100% {background-position: 0 50px, 15px 65px, 50px 150px;}
+    }
+
+    header {
+      background: linear-gradient(45deg, #d72631, #f46036);
+      padding: 25px 15px;
+      text-align: center;
+      box-shadow:
+        0 0 15px 5px #ff4f4f;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      user-select: none;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      color: #fff;
+      letter-spacing: 4px;
+      text-shadow:
+        0 0 7px #ffcbcb,
+        0 0 20px #ff7a7a;
+    }
+    header p {
+      margin-top: 8px;
+      font-size: 1rem;
+      color: #ffe1e1;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-shadow: 0 0 5px #ff8f8f;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 30px;
+      background: radial-gradient(circle at bottom right, #280000, #010101);
+      position: relative;
+      z-index: 1;
+      min-height: 600px;
+    }
+
+    /* Left side: Big festive image or illustration */
+    .promo-image {
+      flex: 1;
+      max-width: 500px;
+      min-width: 280px;
+      background: url('https://images.unsplash.com/photo-1601924928867-f487a6c5775b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5dXx8MHx8fHx8fHx8MTY4OTAzNjE5NQ&ixlib=rb-4.0.3&q=80&w=800') no-repeat center/cover;
       border-radius: 25px;
-      max-width: 460px;
-      width: 100%;
-      padding: 30px 40px;
+      box-shadow:
+        0 0 30px 4px #ff3f3f,
+        0 0 50px 15px #ff3f3f66;
+      filter: drop-shadow(0 0 10px #ff0000);
+    }
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column-reverse;
+        min-height: auto;
+      }
+      .promo-image {
+        width: 90vw;
+        height: 200px;
+        margin-top: 30px;
+        max-width: none;
+      }
+    }
+
+    /* Right side: Prize section */
+    .prize-section {
+      flex: 1;
+      background: linear-gradient(135deg, #ff495c, #a40000);
+      border-radius: 25px;
+      padding: 30px 30px 40px;
       box-shadow:
         0 0 10px #ff0000,
-        0 0 20px #ff4500,
-        0 0 30px #ff6347,
-        0 0 40px #ff4500,
-        0 0 50px #ff0000;
-      text-align: center;
+        0 0 20px #ff4a4a,
+        inset 0 0 10px #fff3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: relative;
       overflow: hidden;
       user-select: none;
+      max-width: 450px;
     }
 
-    /* Decorative blinking lights */
-    .lights {
+    /* Animated flickering lights border */
+    .prize-section::before {
+      content: "";
       position: absolute;
-      top: -10px;
-      left: -10px;
-      width: calc(100% + 20px);
-      height: calc(100% + 20px);
-      pointer-events: none;
+      inset: 0;
       border-radius: 25px;
-      box-shadow:
-        0 0 10px #ffef96,
-        0 0 20px #f8e16c,
-        0 0 30px #ffbf00;
-      animation: flicker 3s infinite alternate;
+      padding: 3px;
+      background:
+        linear-gradient(270deg, #ff0000, #ff6600, #ff0000, #ff6600);
+      background-size: 600% 600%;
+      animation: glowing 6s linear infinite;
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: subtract;
+      pointer-events: none;
       z-index: 0;
     }
 
-    @keyframes flicker {
-      0%   {opacity: 1;}
-      50%  {opacity: 0.6;}
-      100% {opacity: 1;}
+    @keyframes glowing {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
-    
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+
+    .prize-section h2 {
+      font-size: 2rem;
+      margin-bottom: 6px;
+      color: #fff5;
       letter-spacing: 3px;
       text-shadow:
-        0 0 5px #fff,
-        0 0 10px #ffd700,
-        0 0 20px #ffa500;
+        0 0 5px #ffbaba,
+        0 0 20px #ff4c4c;
     }
 
-    .subtitle {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
+    .prize-section h3 {
+      font-size: 1.7rem;
+      margin-bottom: 25px;
       text-transform: uppercase;
-      color: #ffeaa7;
-      letter-spacing: 2px;
-      text-shadow: 0 0 7px #ff9f1c;
+      font-weight: 700;
+      color: #ffd6d6;
+      letter-spacing: 2.5px;
+      text-shadow:
+        0 0 6px #ff7575,
+        0 0 15px #ff2a2a;
     }
 
-    p.chances {
-      font-size: 1.25rem;
-      margin-bottom: 20px;
+    .chances-left {
+      font-size: 1.4rem;
+      margin-bottom: 18px;
       font-weight: 700;
-      text-shadow: 0 0 7px #ff6f61;
-    }
-
-    button {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin: 10px 10px 10px 0;
-      padding: 14px 32px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
       color: #fff;
-      background: linear-gradient(45deg, #ffd194, #d93a3a);
+      text-shadow:
+        0 0 8px #fff7,
+        0 0 20px #ff6b6b;
+    }
+    .chances-left strong {
+      font-size: 2rem;
+      color: #fff7b3;
+      text-shadow:
+        0 0 20px #ffd700,
+        0 0 25px #ffb700;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      background: linear-gradient(45deg, #ff2a2a, #b10000);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 14px 36px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border-radius: 50px;
       box-shadow:
-        0 4px 15px rgb(255 145 145 / 0.7),
-        inset 0 -3px 5px rgb(255 255 255 / 0.3);
-      text-shadow: 0 0 5px #000;
-      transition: all 0.3s ease;
+        0 4px 15px rgb(255 0 0 / 0.85),
+        inset 0 -3px 8px rgb(255 255 255 / 0.15);
+      text-shadow: 0 0 8px #7a0000;
       user-select: none;
+      transition: all 0.25s ease;
+      flex-grow: 1;
+      min-width: 150px;
+      max-width: 220px;
       position: relative;
       overflow: hidden;
       z-index: 1;
     }
-
     button:disabled {
-      background: #888;
+      background: #660000;
       box-shadow: none;
       cursor: not-allowed;
-      color: #ccc;
+      color: #bbb;
       text-shadow: none;
     }
-
     button:hover:not(:disabled) {
-      background: linear-gradient(45deg, #ffafaf, #d93a3a);
+      background: linear-gradient(45deg, #ff6363, #d00000);
       box-shadow:
-        0 6px 20px rgb(255 80 80 / 0.85),
-        inset 0 -3px 8px rgb(255 255 255 / 0.5);
-      transform: scale(1.05);
+        0 6px 25px rgb(255 80 80 / 0.95),
+        inset 0 -3px 10px rgb(255 255 255 / 0.4);
+      transform: scale(1.07);
+      outline: none;
+    }
+    button:focus-visible {
+      outline: 3px solid #ffc107;
+      outline-offset: 3px;
     }
 
     #message {
-      margin-top: 30px;
-      min-height: 40px;
       font-size: 1.3rem;
       font-weight: 700;
+      min-height: 62px;
+      text-align: center;
       line-height: 1.3;
-      color: #fee440;
+      color: #ffea71;
       text-shadow:
-        0 0 7px #ffec98,
-        0 0 20px #ffb347;
+        0 0 7px #ffcf24,
+        0 0 20px #ff9e00;
+      user-select: none;
+      margin-bottom: 0;
+      padding: 0 10px;
+      word-wrap: break-word;
     }
 
-    .note {
-      margin-top: 35px;
-      color: #ffddb7;
-      font-size: 0.85rem;
-      letter-spacing: 1.1px;
-      text-shadow: 0 0 5px #8b0000;
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: #ff8c8c;
+      font-size: 0.9rem;
+      padding: 15px 5px 25px;
+      user-select: none;
+      text-shadow: 0 0 4px #5a1a1a;
+      background: transparent;
     }
 
-    .share-url {
-      margin-top: 10px;
-      font-size: 0.85rem;
-      word-break: break-all;
-      text-shadow: 0 0 4px #741313;
-      color: #ff9a9a;
-      cursor: text;
-      user-select: all;
-    }
-
-    /* Responsive typography and layout */
-    @media (max-width: 480px) {
-      .container {
-        padding: 25px 20px;
+    /* Responsive */
+    @media (max-width: 1000px) {
+      main {
+        flex-direction: column-reverse;
+        gap: 40px;
+        min-height: auto;
+        padding: 30px 15px 50px;
+      }
+      .prize-section {
         max-width: 100%;
-        border-radius: 0;
-        box-shadow: none;
+        width: 100%;
       }
-      h1 {
-        font-size: 2rem;
-      }
-      .subtitle {
-        font-size: 1rem;
-        margin-bottom: 20px;
-      }
-      p.chances {
-        font-size: 1.1rem;
+      .promo-image {
+        max-width: 90vw;
+        height: 240px;
+        border-radius: 18px;
+        box-shadow:
+          0 0 30px 6px #ff4a4a,
+          0 0 50px 20px #ff4a4a66;
       }
       button {
-        font-size: 1rem;
-        padding: 12px 24px;
-        margin: 8px 6px 8px 0;
-        border-radius: 40px;
+        max-width: 100%;
       }
-      #message {
-        font-size: 1.15rem;
-        margin-top: 25px;
-      }
-      .note {
-        font-size: 0.8rem;
+      .btn-group {
+        flex-direction: column;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container" role="main" aria-label="Holiday offer chance to win game">
-    <div class="lights" aria-hidden="true"></div>
-    <h1>🎅 Holiday Crazy Offer! 🎄</h1>
-    <div class="subtitle">New Year & Christmas Special</div>
-    <p class="chances">Chances left: <strong id="chancesLeft" aria-live="polite" aria-atomic="true">0</strong></p>
-    <button id="playBtn" disabled aria-disabled="true" aria-describedby="message">Play</button>
-    <button id="shareBtn" aria-describedby="message">Share Website</button>
-    <p id="message" role="status" aria-live="polite"></p>
-    <p class="note">* You get 3 chances each time you share this website.</p>
-    <p class="note share-url" title="Share this URL" tabindex="0" aria-label="Share URL to copy or share" id="shareUrl"></p>
-  </div>
+  <header>
+    <h1>Holiday Mega Offer</h1>
+    <p>Christmas & New Year Special 🎅✨</p>
+  </header>
+
+  <main>
+    <div class="promo-image" aria-hidden="true" title="Festive Celebrations"></div>
+
+    <section class="prize-section" aria-label="Prize Play Section">
+      <h2>🎁 Win Exciting Prizes!</h2>
+      <h3>Get 3 Chances Per Share</h3>
+      <p class="chances-left" aria-live="polite">
+        Chances left: <strong id="chancesLeft">0</strong>
+      </p>
+      <div class="btn-group">
+        <button id="playBtn" disabled aria-disabled="true" aria-describedby="message" type="button">Play</button>
+        <button id="shareBtn" type="button" aria-describedby="message">Share Website</button>
+      </div>
+      <p id="message" role="status" aria-live="polite" aria-atomic="true"></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Holiday Offers — Spread the Joy!
+  </footer>
 
 <script>
-  (function(){
+  (function() {
     const MAX_CHANCES = 3;
     const STORAGE_KEY = "holiday_chances_left";
     const WIN_MESSAGES = [
@@ -223,51 +349,65 @@
     const playBtn = document.getElementById("playBtn");
     const shareBtn = document.getElementById("shareBtn");
     const messageEl = document.getElementById("message");
-    const shareUrlEl = document.getElementById("shareUrl");
 
-    shareUrlEl.textContent = window.location.href;
-
-    // Load chances from localStorage on page load
-    const storedChances = localStorage.getItem(STORAGE_KEY);
-    if(storedChances !== null) {
-      let val = Number(storedChances);
-      if(!isNaN(val) && val >= 0 && val <= MAX_CHANCES) {
-        chancesLeft = val;
-        if(chancesLeft > 0) hasShared = true;
+    // On load, populate chances from localStorage if valid
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored !== null) {
+        const val = Number(stored);
+        if (!isNaN(val) && val >= 0 && val <= MAX_CHANCES) {
+          chancesLeft = val;
+          if (chancesLeft > 0) hasShared = true;
+        }
       }
+    } catch(e) {
+      // localStorage access can fail in rare cases, ignore
+      chancesLeft = 0;
+      hasShared = false;
     }
     updateUI();
 
-    shareBtn.addEventListener("click", () => {
-      if (hasShared) {
-        alert("You already shared. You have 3 chances now.");
-        return;
+    shareBtn.addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Holiday Mega Offer 🎄🎉",
+            text: "Join me and get 3 chances to win exciting prizes! Share & Play 🎁🎅",
+            url: window.location.href
+          });
+          if (!hasShared) {
+            hasShared = true;
+            chancesLeft = MAX_CHANCES;
+            localStorage.setItem(STORAGE_KEY, chancesLeft);
+            setMessage("Thanks for sharing! You now have 3 chances.");
+            updateUI();
+          } else {
+            alert("You already shared and have 3 chances available.");
+          }
+        } catch (err) {
+          // User cancelled or error, do nothing special
+          setMessage("Share cancelled or failed. Try sharing to get chances.");
+        }
+      } else {
+        // fallback for platforms not supporting Web Share API
+        // show custom share popup with popular share links (WhatsApp, Telegram etc.)
+
+        showCustomSharePopup();
       }
-      // Simulate sharing, replace with real share logic if needed
-      hasShared = true;
-      chancesLeft = MAX_CHANCES;
-      localStorage.setItem(STORAGE_KEY, chancesLeft);
-      updateUI();
-      setMessage("Thanks for sharing! You have 3 chances now.");
     });
 
     playBtn.addEventListener("click", () => {
-      if(chancesLeft <= 0) {
-        setMessage("No chances left. Please share to get 3 new chances.");
-        playBtn.disabled = true;
-        playBtn.setAttribute("aria-disabled", "true");
+      if (chancesLeft <= 0) {
+        setMessage("No chances left. Share to get 3 new chances.");
+        disablePlay();
         return;
       }
-      // Random win message
       const msg = WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)];
       setMessage(msg);
       chancesLeft--;
       localStorage.setItem(STORAGE_KEY, chancesLeft);
-      if(chancesLeft === 0) {
-        playBtn.disabled = true;
-        playBtn.setAttribute("aria-disabled", "true");
-      }
       updateUI();
+      if (chancesLeft === 0) disablePlay();
     });
 
     function updateUI() {
@@ -276,13 +416,182 @@
         playBtn.disabled = false;
         playBtn.setAttribute("aria-disabled", "false");
       } else {
-        playBtn.disabled = true;
-        playBtn.setAttribute("aria-disabled", "true");
+        disablePlay();
       }
+    }
+
+    function disablePlay() {
+      playBtn.disabled = true;
+      playBtn.setAttribute("aria-disabled", "true");
     }
 
     function setMessage(text) {
       messageEl.textContent = text;
+    }
+
+
+    // Custom share popup for fallback (if navigator.share not available)
+    // Shows overlay with share links (WhatsApp, Telegram, copy link)
+    function showCustomSharePopup() {
+      if(document.getElementById("customShareOverlay")) return; // one instance only
+
+      // Create overlay
+      const overlay = document.createElement("div");
+      overlay.id = "customShareOverlay";
+      overlay.style.position = "fixed";
+      overlay.style.top = 0;
+      overlay.style.left = 0;
+      overlay.style.width = "100vw";
+      overlay.style.height = "100vh";
+      overlay.style.backgroundColor = "rgba(0,0,0,0.85)";
+      overlay.style.zIndex = "9999";
+      overlay.style.display = "flex";
+      overlay.style.flexDirection = "column";
+      overlay.style.justifyContent = "center";
+      overlay.style.alignItems = "center";
+      overlay.style.padding = "20px";
+      overlay.style.backdropFilter = "blur(6px)";
+
+      // Content box
+      const box = document.createElement("div");
+      box.style.background = "#440000";
+      box.style.borderRadius = "20px";
+      box.style.padding = "25px 30px";
+      box.style.maxWidth = "320px";
+      box.style.width = "90vw";
+      box.style.color = "#ffdadb";
+      box.style.textAlign = "center";
+      box.style.boxShadow = "0 0 15px 3px #ff4f4f";
+
+      // Title
+      const title = document.createElement("h2");
+      title.textContent = "Share this Offer!";
+      title.style.marginBottom = "20px";
+      title.style.color = "#ff8181";
+      title.style.textShadow = "0 0 15px #ff3f3f";
+      box.appendChild(title);
+
+      const linkToShare = window.location.href;
+      const shareText = encodeURIComponent("Join the Holiday Mega Offer! Get 3 chances to win prizes: ");
+      const encodedUrl = encodeURIComponent(linkToShare);
+
+      // Share buttons container
+      const btnContainer = document.createElement("div");
+      btnContainer.style.display = "flex";
+      btnContainer.style.flexDirection = "column";
+      btnContainer.style.gap = "15px";
+
+      // WhatsApp Share
+      const waBtn = document.createElement("a");
+      waBtn.href = `https://wa.me/?text=${shareText}${encodedUrl}`;
+      waBtn.target = "_blank";
+      waBtn.rel = "noopener noreferrer";
+      waBtn.textContent = "Share on WhatsApp";
+      styleShareLink(waBtn, "#25D366", "#128C7E");
+      btnContainer.appendChild(waBtn);
+
+      // Telegram Share
+      const tgBtn = document.createElement("a");
+      tgBtn.href = `https://telegram.me/share/url?url=${encodedUrl}&text=${shareText}`;
+      tgBtn.target = "_blank";
+      tgBtn.rel = "noopener noreferrer";
+      tgBtn.textContent = "Share on Telegram";
+      styleShareLink(tgBtn, "#54A9EB", "#107AC9");
+      btnContainer.appendChild(tgBtn);
+
+      // Facebook Share
+      const fbBtn = document.createElement("a");
+      fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+      fbBtn.target = "_blank";
+      fbBtn.rel = "noopener noreferrer";
+      fbBtn.textContent = "Share on Facebook";
+      styleShareLink(fbBtn, "#4267B2", "#29487D");
+      btnContainer.appendChild(fbBtn);
+
+      // Copy Link button
+      const copyBtn = document.createElement("button");
+      copyBtn.textContent = "Copy Link";
+      copyBtn.style.background = "#ff4f4f";
+      copyBtn.style.border = "none";
+      copyBtn.style.color = "#fff";
+      copyBtn.style.padding = "12px";
+      copyBtn.style.fontWeight = "700";
+      copyBtn.style.borderRadius = "50px";
+      copyBtn.style.cursor = "pointer";
+      copyBtn.style.fontSize = "1.05rem";
+      copyBtn.style.boxShadow = "0 2px 12px #ff4f4fbb inset";
+      copyBtn.style.userSelect = "none";
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(linkToShare).then(() => {
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => (copyBtn.textContent = "Copy Link"), 1800);
+          if (!hasShared) {
+            hasShared = true;
+            chancesLeft = MAX_CHANCES;
+            localStorage.setItem(STORAGE_KEY, chancesLeft);
+            setMessage("Thanks for sharing! You now have 3 chances.");
+            updateUI();
+          }
+        });
+      });
+      btnContainer.appendChild(copyBtn);
+
+      // Close button
+      const closeBtn = document.createElement("button");
+      closeBtn.textContent = "Close";
+      closeBtn.style.marginTop = "30px";
+      closeBtn.style.background = "#660000";
+      closeBtn.style.border = "none";
+      closeBtn.style.color = "#ff9a9a";
+      closeBtn.style.padding = "10px 30px";
+      closeBtn.style.fontWeight = "700";
+      closeBtn.style.borderRadius = "50px";
+      closeBtn.style.cursor = "pointer";
+      closeBtn.style.fontSize = "1.05rem";
+      closeBtn.style.userSelect = "none";
+      closeBtn.style.boxShadow = "0 0 12px #ff4f4fbb";
+      closeBtn.addEventListener("click", () => {
+        document.body.removeChild(overlay);
+        setMessage(""); // Clear message to avoid confusion
+      });
+
+      box.appendChild(btnContainer);
+      box.appendChild(closeBtn);
+      overlay.appendChild(box);
+      document.body.appendChild(overlay);
+
+      // Prevent scrolling behind the overlay
+      document.body.style.overflow = "hidden";
+
+      // Restore scroll after close
+      overlay.addEventListener("transitionend", () => {
+        if (!document.body.contains(overlay)) {
+          document.body.style.overflow = "";
+        }
+      });
+
+      // Function to style anchor share links
+      function styleShareLink(el, bg, bgDark) {
+        el.style.background = `linear-gradient(45deg, ${bg}, ${bgDark})`;
+        el.style.color = '#fff';
+        el.style.textDecoration = 'none';
+        el.style.padding = '12px 15px';
+        el.style.borderRadius = '40px';
+        el.style.fontWeight = '700';
+        el.style.fontSize = '1rem';
+        el.style.userSelect = 'none';
+        el.style.display = 'block';
+        el.style.boxShadow = `0 3px 12px ${bg}99`;
+        el.style.transition = 'all 0.25s ease';
+        el.addEventListener('mouseenter', () => {
+          el.style.filter = 'brightness(1.1)';
+          el.style.transform = 'scale(1.05)';
+        });
+        el.addEventListener('mouseleave', () => {
+          el.style.filter = 'brightness(1)';
+          el.style.transform = 'none';
+        });
+      }
     }
   })();
 </script>
