@@ -20,15 +20,15 @@
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.75);
+    background: rgba(0,0,0,0.8);
     z-index: 0;
   }
   header {
     position: relative;
     z-index: 10;
     padding: 15px 20px;
-    background: #ff5a4a;
-    box-shadow: 0 0 15px 4px #ff5353cc;
+    background: #d32f2f;
+    box-shadow: 0 0 15px 4px rgba(211, 47, 47, 0.7);
     color: #fff;
     font-weight: 700;
     font-size: 1.25rem;
@@ -42,7 +42,7 @@
   header nav button {
     background: transparent;
     border: none;
-    color: #ffeaea;
+    color: #ffbdbdcc;
     font-weight: 600;
     margin: 0 12px;
     font-size: 1rem;
@@ -71,20 +71,20 @@
     user-select: none;
   }
   .intro-section, .detail-section {
-    background: rgba(255 255 255 / 0.9);
-    color: #333;
+    background: #fff5f5;
+    color: #5d1e1e;
     border-radius: 14px;
-    box-shadow: 0 5px 18px rgb(0 0 0 / 0.15);
-    padding: 26px 30px;
+    box-shadow: 0 5px 20px rgb(0 0 0 / 0.15);
+    padding: 30px 40px;
   }
   .intro-section h1 {
     margin: 0 0 12px;
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     font-weight: 900;
-    color: #d8433f;
+    color: #b72524;
   }
   .intro-section p {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.55;
     max-width: 720px;
   }
@@ -95,45 +95,43 @@
     flex-wrap: wrap;
   }
   .prize-section {
-    background: rgba(216, 74, 65, 0.95);
+    background: #f44336;
     border-radius: 20px;
-    padding: 28px 30px 36px;
-    box-shadow: 0 0 25px 8px rgba(255, 102, 102, 0.8);
-    flex: 0 0 360px;
+    padding: 30px 32px 40px;
+    box-shadow: 0 0 25px 8px rgba(244, 67, 54, 0.8);
+    flex: 0 0 370px;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #fff5f5;
   }
   .prize-section h2 {
-    font-size: 1.85rem;
+    font-size: 1.9rem;
     font-weight: 700;
     margin-bottom: 8px;
     letter-spacing: 0.07em;
-    color: #fff5f4;
   }
   .prize-section h3 {
     font-size: 1.15rem;
     font-weight: 600;
     margin-bottom: 16px;
     letter-spacing: 0.06em;
-    color: #ffdfdc;
     text-transform: uppercase;
   }
   .chances-left {
     font-weight: 700;
-    font-size: 1.22rem;
+    font-size: 1.25rem;
     margin-bottom: 20px;
-    color: #ffe199;
   }
   .chances-left strong {
-    color: #ffeb4c;
+    color: #ffecb3;
   }
   .grid-3x3 {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 16px;
     perspective: 900px;
   }
   .card-container {
@@ -141,19 +139,18 @@
     width: 100%;
     padding-top: 100%;
     cursor: pointer;
-    border-radius: 16px;
-    background: #ffe4e3;
-    box-shadow: 0 8px 12px rgba(255, 125, 125, 0.7);
-    -webkit-tap-highlight-color: transparent;
+    border-radius: 18px;
+    background: #ffe5e5;
+    box-shadow: 0 8px 14px rgba(211, 47, 47, 0.7);
   }
   .card-inner {
     position: absolute;
     inset: 0;
-    border-radius: 16px;
-    transition: transform 0.45s ease;
+    border-radius: 18px;
+    transition: transform 0.5s ease;
     transform-style: preserve-3d;
-    box-shadow: inset 0 0 22px rgba(255,255,255,0.6);
-    background: #f8f0f0;
+    background: #fff0f0;
+    box-shadow: inset 0 0 24px rgba(255,255,255,0.7);
   }
   .card-container.flipped .card-inner {
     transform: rotateY(180deg);
@@ -161,131 +158,143 @@
   .card-front, .card-back {
     position: absolute;
     inset: 0;
-    border-radius: 16px;
+    border-radius: 18px;
     backface-visibility: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.4rem;
+    font-size: 2.5rem;
     font-weight: 700;
     user-select: none;
   }
   .card-front {
-    background-color: #ff7d7a;
+    background-color: #e57373;
     color: #fff;
     box-shadow:
-      0 4px 12px rgba(255, 118, 113, 0.9),
-      inset 0 0 24px #ffb0ae;
+      0 4px 16px rgba(244, 67, 54, 0.85),
+      inset 0 0 30px #ff9e9e;
     transition: background-color 0.3s ease;
   }
   .card-front:hover {
-    background-color: #ff8c89;
+    background-color: #ef5350;
     box-shadow:
-      0 6px 20px rgba(255, 135, 130, 0.95),
-      inset 0 0 28px #ffbbb9;
+      0 7px 26px rgba(244, 67, 54, 0.95),
+      inset 0 0 35px #ffb7b6;
   }
   .card-back {
-    background-color: #fff9f9;
+    background-color: #fff3f3;
     border: 2px solid transparent;
     font-size: 2.2rem;
     justify-content: center;
     align-items: center;
     transform: rotateY(180deg);
-    color: #6b2b28;
+    color: #993333;
   }
   .card-back.prize-2 {
-    background: linear-gradient(135deg, #caf1cb, #92d877);
-    border-color: #4a933b;
-    color: #204507;
+    background: linear-gradient(135deg, #dcedc8, #aed581);
+    border-color: #7cb342;
+    color: #345214;
   }
   .card-back.prize-5 {
-    background: linear-gradient(135deg, #b4d5f9, #7fb6e5);
-    border-color: #3372b9;
-    color: #135688;
+    background: linear-gradient(135deg, #bbdefb, #64b5f6);
+    border-color: #1976d2;
+    color: #0b3c74;
   }
   .card-back.prize-10 {
-    background: linear-gradient(135deg, #f1edy7, #d9d466);
-    border-color: #aa9d28;
-    color: #5c5600;
+    background: linear-gradient(135deg, #fff9c4, #fff176);
+    border-color: #fbc02d;
+    color: #755d02;
   }
   .card-back.no-prize {
-    background: linear-gradient(135deg, #f9dede, #f4bebe);
-    border-color: #c45b5b;
-    color: #922f2f;
+    background: linear-gradient(135deg, #ffcdd2, #ef9a9a);
+    border-color: #c62828;
+    color: #7b1a1a;
     font-weight: 900;
   }
   #shareBtn {
     margin-top: 30px;
-    background-color: #e44b41;
+    background-color: #d32f2f;
     border: none;
     outline: none;
     color: #fff;
     font-weight: 700;
-    padding: 14px 34px;
-    border-radius: 36px;
+    padding: 16px 36px;
+    border-radius: 40px;
     cursor: pointer;
-    font-size: 1.1rem;
-    box-shadow: 0 8px 26px rgba(228, 75, 65, 0.8);
+    font-size: 1.15rem;
+    box-shadow: 0 9px 28px rgba(211, 47, 47, 0.85);
     user-select: none;
     width: 100%;
     max-width: 280px;
     transition: background-color 0.3s ease;
   }
   #shareBtn:hover:not(:disabled) {
-    background-color: #f06258;
-    box-shadow: 0 10px 34px rgba(240, 98, 88, 0.9);
+    background-color: #bf2b2b;
+    box-shadow: 0 12px 34px rgba(191, 43, 43, 0.9);
   }
   #shareBtn:disabled {
-    background-color: #c9a29e;
+    background-color: #b97a7a;
     cursor: not-allowed;
     box-shadow: none;
   }
   #message {
-    margin-top: 16px;
-    min-height: 48px;
-    font-size: 1.15rem;
+    margin-top: 18px;
+    min-height: 54px;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #444;
+    color: #d32f2f;
     user-select: none;
     max-width: 280px;
     text-align: center;
-    background: #fcf7f6;
-    border-radius: 12px;
-    padding: 10px 16px;
-    box-shadow: 0 0 12px #dbb9b3;
+    background: #ffebee;
+    border-radius: 14px;
+    padding: 12px 18px;
+    box-shadow: 0 0 12px #e5737355;
     opacity: 0;
     transition: opacity 0.4s ease;
   }
   #message.visible {
     opacity: 1;
   }
-  .detail-section {
-    background: rgba(255 255 255 / 0.9);
-    color: #333;
+  .intro-section, .detail-section {
+    background: #fff5f5;
+    color: #5d1e1e;
     border-radius: 14px;
-    box-shadow: 0 5px 18px rgb(0 0 0 / 0.15);
-    padding: 26px 30px;
+    box-shadow: 0 5px 20px rgb(0 0 0 / 0.12);
+    padding: 32px 40px;
+  }
+  .intro-section h1 {
+    margin: 0 0 16px;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: #b72524;
+  }
+  .intro-section p {
+    font-size: 1.15rem;
+    line-height: 1.55;
+  }
+  .content-flex {
+    display: flex;
+    gap: 72px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .detail-section {
     flex: 0 1 360px;
     max-width: 100%;
   }
   .detail-section h2 {
     font-weight: 700;
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-size: 1.6rem;
+    color: #8d2b28;
   }
   .detail-section p {
     font-size: 1rem;
     line-height: 1.5;
-    color: #555;
+    color: #4e3131;
   }
-  .content-flex {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
   @media (max-width: 900px) {
     main {
       padding: 20px 15px 40px;
@@ -293,6 +302,7 @@
     .content-flex {
       flex-direction: column;
       align-items: center;
+      gap: 40px;
     }
     .prize-section, .detail-section {
       width: 100%;
@@ -304,21 +314,18 @@
 <body>
 <header>
   <h1>Best Telecom</h1>
-  <p>Christmas &amp; New Year Special 🎅✨</p>
+  <nav aria-label="Main navigation">
+    <button type="button" onclick="openModal('Home','Welcome to Best Telecom! Explore the best deals on mobile devices this holiday season. Share and win exciting discounts.')">Home</button>
+    <button type="button" onclick="openModal('About Us','Best Telecom is dedicated to providing top quality mobile solutions and exclusive festival offers to our valued customers. Enjoy the holidays with great savings!')">About Us</button>
+  </nav>
 </header>
 <main>
-  <!-- Intro -->
-  <section class="intro-section" style="max-width: 900px; margin-bottom: 40px; background: rgba(255 255 255 / 0.9); border-radius:14px; color:#333; padding:32px 40px; box-shadow: 0 5px 20px rgb(0 0 0 / 0.15); user-select:none;">
-    <h1 style="color:#d84228; margin-bottom: 20px;">Holiday Mega Offer</h1>
-    <p style="font-size:1.15rem; line-height:1.6; max-width:720px;">
-      Celebrate this festive season with Best Telecom! Get exclusive chances to win discounts of 2%, 5%, or 10% on your next purchase. Share our website to get new chances, and try your luck with our exciting card flip game.
-    </p>
+  <section class="intro-section" aria-label="Introduction">
+    <h1>Holiday Mega Offer</h1>
+    <p>Celebrate this festive season with Best Telecom. Share our site to get chances to win 2%, 5%, or 10% discounts. Use your chances wisely and good luck!</p>
   </section>
 
-  <!-- Main content flex -->
-  <div class="content-flex" aria-label="Prize section and details">
-
-    <!-- Prize section (left side) -->
+  <div class="content-flex" aria-label="Prize and details">
     <section class="prize-section" aria-label="Prize Flip Grid">
       <h2>🎁 Win Exciting Prizes!</h2>
       <h3>Get 3 Chances Per Share</h3>
@@ -327,39 +334,32 @@
       <button id="shareBtn" aria-describedby="message">Share Website to Get 3 Chances</button>
       <p id="message" aria-live="polite" aria-atomic="true"></p>
     </section>
-
-    <!-- Details section (right side) -->
-    <section class="detail-section" aria-label="About the offer and rules">
-      <h2>About This Offer</h2>
-      <p>
-        Each time you share the website, you receive 3 chances to flip a card and win discounts of 2%, 5%, or 10% on your next purchase.
-      </p>
-      <p>
-        Once you win a discount, the offer is considered redeemed and you cannot play again, even with new shares.
-      </p>
-      <p>
-        If you do not win any discount after using your chances, sharing again will grant you more chances.
-      </p>
-      <p>
-        The game resets after you exhaust your chances without winning, or after a winning prize has been claimed.
-      </p>
-      <p>
-        Enjoy and good luck!
-      </p>
+    <section class="detail-section" aria-label="Offer details and rules">
+      <h2>Offer Details</h2>
+      <p>Each share grants you 3 chances to flip cards and win discounts of 2%, 5%, or 10% on your next purchase.</p>
+      <p>Once you win a discount, you cannot participate again, even if you share more.</p>
+      <p>If you use all chances without winning, share again to receive new chances.</p>
+      <p>Prize cards are randomized every game reset.</p>
+      <p>Enjoy your shopping experience and happy holidays!</p>
     </section>
   </div>
 </main>
+
+<!-- Modal -->
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:10000;justify-content:center;align-items:center;">
+  <div role="document" style="background:#fff;padding:24px 30px;max-width:400px;width:90vw;border-radius:12px;box-shadow:0 0 24px rgba(0,0,0,0.3);color:#222;position:relative;">
+    <button aria-label="Close modal" onclick="closeModal()" style="position:absolute;top:10px;right:15px;background:none;border:none;font-size:1.5rem;font-weight:700;cursor:pointer;color:#930b0b;">&times;</button>
+    <h2 id="modalTitle" style="margin-top:0;margin-bottom:14px;"></h2>
+    <p id="modalDesc" style="line-height:1.4;font-weight:500;"></p>
+  </div>
+</div>
 
 <script>
   (function () {
     const MAX_CHANCES = 3;
     const STORAGE_KEY = "holiday_chances_left";
     const STORAGE_WIN_KEY = "holiday_has_won";
-    const WIN_EMOJI_MAP = {
-      2: "prize-2",
-      5: "prize-5",
-      10: "prize-10"
-    };
+    const WIN_EMOJI_MAP = { 2: "prize-2", 5: "prize-5", 10: "prize-10" };
     const NO_PRIZE_EMOJI = "❌";
     const targetWhatsAppNumber = "+243851126761";
 
@@ -370,16 +370,16 @@
 
     let chancesLeft = 0;
     let flippedIndexes = new Set();
-    let WIN_POSITIONS = new Map(); // index -> prize percentage
+    let WIN_POSITIONS = new Map();
     let hasWon = false;
 
     function initPrizePositions() {
       WIN_POSITIONS.clear();
-      const possiblePercentages = [2,5,10];
-      while(WIN_POSITIONS.size < 3) {
-        const idx = Math.floor(Math.random()*9);
-        if(WIN_POSITIONS.has(idx)) continue;
-        const perc = possiblePercentages[Math.floor(Math.random()*possiblePercentages.length)];
+      const possiblePercentages = [2, 5, 10];
+      while (WIN_POSITIONS.size < 3) {
+        const idx = Math.floor(Math.random() * 9);
+        if (WIN_POSITIONS.has(idx)) continue;
+        const perc = possiblePercentages[Math.floor(Math.random() * possiblePercentages.length)];
         WIN_POSITIONS.set(idx, perc);
       }
     }
@@ -389,9 +389,8 @@
       chancesLeft = storedChances !== null ? Number(storedChances) : 0;
       const storedWin = localStorage.getItem(STORAGE_WIN_KEY);
       hasWon = storedWin === "true";
-      if(hasWon) {
-        chancesLeft = 0; // No chances if already won
-      }
+      // If won, chancesLeft to 0
+      if (hasWon) chancesLeft = 0;
     }
 
     function saveState() {
@@ -401,7 +400,7 @@
 
     function renderGrid() {
       gridContainer.innerHTML = "";
-      for(let i=0;i<9;i++) {
+      for (let i = 0; i < 9; i++) {
         const container = document.createElement("div");
         container.className = "card-container";
         container.setAttribute("role", "gridcell");
@@ -418,7 +417,7 @@
 
         const back = document.createElement("div");
         back.className = "card-back";
-        if(WIN_POSITIONS.has(i)) {
+        if (WIN_POSITIONS.has(i)) {
           const perc = WIN_POSITIONS.get(i);
           back.classList.add(WIN_EMOJI_MAP[perc]);
           back.textContent = perc + "%";
@@ -433,9 +432,9 @@
 
         container.addEventListener("click", () => flipCard(i, container));
         container.addEventListener("keydown", e => {
-          if((e.key==="Enter"||e.key===" ")&&!e.repeat) {
+          if ((e.key === "Enter" || e.key === " ") && !e.repeat) {
             e.preventDefault();
-            flipCard(i,container);
+            flipCard(i, container);
           }
         });
 
@@ -443,19 +442,23 @@
       }
       flippedIndexes.clear();
       hideMessage();
+      // On load if already won, show message
+      if (hasWon) {
+        showMessage("You have already redeemed your discount. Thank you!");
+      }
     }
 
     function flipCard(index, container) {
-      if(chancesLeft <= 0) {
+      if(chancesLeft <= 0){
         showMessage("No chances left! Please share to get new chances.");
         return;
       }
-      if(flippedIndexes.has(index)) {
+      if(flippedIndexes.has(index)){
         showMessage("You already flipped this card.");
         return;
       }
-      if(hasWon) {
-        showMessage("You already won a discount. Thank you!");
+      if(hasWon){
+        showMessage("You have already redeemed your discount. Thank you!");
         return;
       }
 
@@ -466,12 +469,12 @@
       saveState();
       updateChancesUI();
 
-      if(WIN_POSITIONS.has(index)) {
+      if(WIN_POSITIONS.has(index)){
         const winPerc = WIN_POSITIONS.get(index);
         hasWon = true;
         saveState();
-        const confirmMsg = `🎉 Congrats! You won ${winPerc}%. Share this win on WhatsApp?`;
-        if(confirm(confirmMsg)) {
+        const confirmMsg = `🎉 Congrats! You won ${winPerc}%. Do you want to share this win on WhatsApp?`;
+        if(confirm(confirmMsg)){
           const now = new Date();
           const timestamp = now.toLocaleString();
           const waMessage = encodeURIComponent(`YOU WIN ${winPerc}% (${timestamp})`);
@@ -479,15 +482,8 @@
           window.open(waUrl,"_blank");
         }
         showMessage(`🎉 You won ${winPerc}%. No more chances available.`);
-      } else {
-        if(chancesLeft === 0) {
-          showMessage("No win this time. Share to get 3 more chances!");
-        } else {
-          hideMessage();
-        }
-      }
-
-      if(chancesLeft === 0 && !hasWon) {
+      } else if(chancesLeft === 0){
+        showMessage("No win this time. Share to get 3 more chances!");
         setTimeout(() => {
           initPrizePositions();
           chancesLeft = 0;
@@ -496,6 +492,8 @@
           updateChancesUI();
           hideMessage();
         }, 1800);
+      } else {
+        hideMessage();
       }
     }
 
@@ -503,30 +501,28 @@
       chancesLeftEl.textContent = chancesLeft;
       shareBtn.disabled = hasWon || chancesLeft === MAX_CHANCES;
     }
-
     function showMessage(text) {
       messageEl.textContent = text;
       messageEl.classList.add("visible");
     }
-
     function hideMessage() {
       messageEl.textContent = "";
       messageEl.classList.remove("visible");
     }
 
     shareBtn.addEventListener("click", async () => {
-      if(hasWon) {
-        alert("You already won a discount and cannot get more chances.");
+      if(hasWon){
+        alert("You have already redeemed your discount and can no longer get chances.");
         return;
       }
-      if(navigator.share) {
-        try {
+      if(navigator.share){
+        try{
           await navigator.share({
-            title: "Best Telecom - Holiday Mega Offer 🎄🎉",
-            text: "Join me and get 3 chances to win exciting prizes! Share & Play 🎁🎅",
+            title:"Best Telecom - Holiday Mega Offer 🎄🎉",
+            text:"Join me and get 3 chances to win exciting prizes! Share & Play 🎁🎅",
             url: window.location.href
           });
-          if(chancesLeft < MAX_CHANCES) {
+          if(chancesLeft < MAX_CHANCES){
             chancesLeft = MAX_CHANCES;
             saveState();
             showMessage("Thanks for sharing! You now have 3 chances.");
@@ -534,11 +530,11 @@
           } else {
             alert("You already have 3 chances available.");
           }
-        } catch {
+        }catch{
           showMessage("Share cancelled or failed. Try sharing to get chances.");
         }
       } else {
-        alert("Sharing is not supported on your device/browser. Please share manually.");
+        alert("Sharing not supported on your device/browser. Please share manually.");
       }
     });
 
@@ -547,9 +543,30 @@
       loadState();
       renderGrid();
       updateChancesUI();
-      hideMessage();
     }
     init();
+
+    // Modal for header navigation (optional, basic example)
+    window.openModal = (title,text) => {
+      if(!window.modal) window.modal = document.createElement('div');
+      modalHtml = `
+        <div style="
+          position:fixed; inset:0; background:rgba(0,0,0,0.85);
+          display:flex; justify-content:center; align-items:center; z-index:10000;
+        ">
+          <div style="
+            background:#fff; color:#333; padding:24px 30px; max-width:400px; width:90vw; border-radius:12px; box-shadow:0 0 25px rgba(0,0,0,0.4); position:relative;
+          ">
+            <button aria-label="Close modal" onclick="document.body.removeChild(this.parentElement.parentElement)" style="position:absolute;top:10px;right:15px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#900;">&times;</button>
+            <h2 style="margin-top:0; margin-bottom:16px;">${title}</h2>
+            <p style="line-height:1.4; font-weight:500;">${text}</p>
+          </div>
+        </div>
+      `;
+      const div = document.createElement('div');
+      div.innerHTML = modalHtml;
+      document.body.appendChild(div.firstElementChild);
+    }
   })();
 </script>
 </body>
